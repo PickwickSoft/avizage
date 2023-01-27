@@ -9,6 +9,10 @@
         "main": "Entitäten",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "selling": {
+        "main": "Verkauf",
+        "interface": "Verkaufsoberfläche"
+      },
       "account": {
         "main": "Zugang",
         "settings": "Einstellungen",

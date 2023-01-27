@@ -1,0 +1,34 @@
+.shop {
+  min-height: 100vh;
+}
+
+table {
+  width: 100%;
+}
+
+td.mat-footer-cell {
+  font-weight: bold;
+}
+
+.product {
+  cursor: pointer;
+  min-height: 8em;
+  min-width: 8em;
+  user-select: none;
+}
+
+.product:hover {
+  background-color: #f1f1f1;
+}
+
+.product:active {
+  background-color: #eae9e9;
+}
+
+.product .name {
+  font-weight: 800;
+}
+
+.product .price {
+  font-weight: 300;
+}

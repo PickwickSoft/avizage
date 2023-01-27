@@ -12,6 +12,10 @@
         "operation": "Operație",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
+      "selling": {
+        "main": "Vânzări",
+        "interface": "Interfață"
+      },
       "account": {
         "main": "Cont",
         "settings": "Setări",

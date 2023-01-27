@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Enter price for {{ category.name }}</h2>
+<mat-dialog-content class="mat-typography">
+  <jhi-alert-error></jhi-alert-error>
+  <p>
+    <mat-form-field>
+      <input matInput type="number" placeholder="Price" [(ngModel)]="price" name="price" required />
+    </mat-form-field>
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-stroked-button mat-dialog-close [mat-dialog-close]="price"><span jhiTranslate="entity.action.cancel">Cancel</span></button>
+  <button mat-flat-button color="primary" [mat-dialog-close]="price" [disabled]="price < 0">
+    <span>Add to cart</span>
+  </button>
+</mat-dialog-actions>
