@@ -2,8 +2,21 @@
   min-height: 100vh;
 }
 
+.h-full {
+  height: 100%;
+}
+
 table {
   width: 100%;
+}
+
+tr.mat-row {
+  height: 80px;
+}
+
+td.mat-cell,
+td.mat-footer-cell {
+  font-size: 17px;
 }
 
 td.mat-footer-cell {
@@ -18,7 +31,7 @@ td.mat-footer-cell {
 }
 
 .product:hover {
-  background-color: #f1f1f1;
+  background-color: rgba(241, 241, 241, 0.68);
 }
 
 .product:active {
@@ -31,4 +44,37 @@ td.mat-footer-cell {
 
 .product .price {
   font-weight: 300;
+}
+
+.bg-icon {
+  position: absolute;
+  bottom: -10px;
+  right: 0;
+  padding-right: 10px;
+  font-size: 4em;
+  color: rgba(0, 0, 0, 0.07);
+}
+
+.mat-icon {
+  color: rgba(0, 0, 0, 0.56);
+}
+
+.mat-icon-button {
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.checkout {
+  height: 3.5em;
+}
+
+.empty {
+  padding-top: 20px;
+  font-size: 30px;
+  font-weight: 500;
+  color: hsl(243, 17%, 22%);
 }

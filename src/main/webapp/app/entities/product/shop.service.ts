@@ -4,7 +4,8 @@ import { Observable } from 'rxjs';
 import { ApplicationConfigService } from '../../core/config/application-config.service';
 import { IProduct } from './product.model';
 import { ICategory } from '../category/category.model';
-import { ICartItem } from '../cart-item/cart-item.model';
+import { APICartItem, ICartItem } from '../cart-item/cart-item.model';
+import { IBill } from '../bill/bill.model';
 
 @Injectable({ providedIn: 'root' })
 export class ShopService {
@@ -20,7 +21,8 @@ export class ShopService {
     return this.http.get<ICategory[]>(`${this.resourceUrl}/category/default`, { observe: 'response' });
   }
 
-  sellCart(cart: ICartItem[]): Observable<HttpResponse<number>> {
-    return this.http.post<number>(`${this.resourceUrl}/sale`, cart, { observe: 'response' });
+  checkout(cart: ICartItem[]): Observable<HttpResponse<IBill>> {
+    cart = cart.map(item => new APICartItem(item.id, item.qty, item.price));
+    return this.http.post<IBill>(`${this.resourceUrl}/sale`, cart, { observe: 'response' });
   }
 }
