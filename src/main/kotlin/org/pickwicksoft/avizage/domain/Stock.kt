@@ -1,28 +1,21 @@
 package org.pickwicksoft.avizage.domain
 
-import org.jetbrains.annotations.NotNull
 import javax.persistence.*
 
 @Entity
 @Table(name = "stock", uniqueConstraints = [ UniqueConstraint(columnNames = ["product", "storage"])])
-class Stock {
+class Stock (
+
+    @ManyToOne
+    val product: Product,
+
+    @ManyToOne
+    val storage: Storage,
+
+    @Column(nullable = false)
+    val quantity: Double,
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "stock_id", nullable = false)
-    var stockId: Long? = null
-
-    @Column(nullable = false)
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    var product: Product? = null
-
-    @Column(nullable = false)
-    @ManyToOne
-    @JoinColumn(name = "storage_id")
-    var storage: Storage? = null
-
-    @field:NotNull
-    @Column(nullable = false)
-    var quantity: Int? = null
-}
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Int? = null
+)

@@ -1,27 +1,21 @@
 package org.pickwicksoft.avizage.domain
 
 import javax.persistence.*
-import javax.validation.constraints.NotNull
-import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "county")
-class County {
+class County (
+
+    @Column(length = 12, nullable = false)
+    val code: String,
+
+    @Column(length = 40, nullable = false)
+    val name: String,
+
+    @ManyToOne
+    val country: Country,
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "county_id", nullable = false)
-    var countyId: Int? = null
-
-    @field:NotNull
-    @field:Size(min = 1, max = 2)
-    @Column(length = 2, nullable = false)
-    var code: String? = null
-
-    @field:NotNull
-    @field:Size(max = 20)
-    @Column(length = 20, nullable = false)
-    var name: String? = null
-
-    @OneToMany(mappedBy = "county")
-    var address: MutableSet<Address> = mutableSetOf()
-}
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Int? = null
+)
