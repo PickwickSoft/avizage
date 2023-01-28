@@ -11,8 +11,8 @@ import javax.validation.constraints.Size
 class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    var id: Int? = null
+    @Column(name = "account_id", nullable = false)
+    var accountId: Int? = null
 
     @field:NotNull
     @field:Size(max = 30)

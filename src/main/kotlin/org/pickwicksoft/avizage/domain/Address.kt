@@ -8,8 +8,8 @@ import javax.validation.constraints.Size
 class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    var id: Int? = null
+    @Column(name = "address_id", nullable = false)
+    var addressId: Int? = null
 
     @field:Size(max = 100)
     @Column(name = "street_and_number", length = 100, nullable = false)
@@ -23,12 +23,14 @@ class Address {
     @Column(length = 7)
     var zip: String? = null
 
-    @field:Size(max = 30)
     @ManyToOne
-    @JoinColumn(name = "county_id", referencedColumnName = "id")
+    @JoinColumn(name = "county_id")
     var county: County? = null
 
-    @field:Size(max = 50)
-    @Column(name = "country", length = 50, nullable = false)
-    var country: String? = null
+    @ManyToOne
+    @JoinColumn(name = "country_id")
+    var country: Country? = null
+
+    @OneToMany(mappedBy = "address")
+    var storages: MutableSet<Storage> = mutableSetOf()
 }

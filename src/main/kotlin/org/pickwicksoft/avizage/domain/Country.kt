@@ -5,12 +5,12 @@ import javax.validation.constraints.NotNull
 import javax.validation.constraints.Size
 
 @Entity
-@Table(name = "county")
-class County {
+@Table(name = "country")
+class Country {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "county_id", nullable = false)
-    var countyId: Int? = null
+    @Column(name = "country_id", nullable = false)
+    var countryId: Int? = null
 
     @field:NotNull
     @field:Size(min = 1, max = 2)
@@ -22,6 +22,6 @@ class County {
     @Column(length = 20, nullable = false)
     var name: String? = null
 
-    @OneToMany(mappedBy = "county")
+    @OneToMany(mappedBy = "country")
     var address: MutableSet<Address> = mutableSetOf()
 }
