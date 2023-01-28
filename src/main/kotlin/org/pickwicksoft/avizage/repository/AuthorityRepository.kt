@@ -1,6 +1,6 @@
 package org.pickwicksoft.avizage.repository
 
-import org.pickwicksoft.avizage.domain.Authority
+import org.pickwicksoft.avizage.domain.entity.Authority
 import org.springframework.data.jpa.repository.JpaRepository
 
 /**

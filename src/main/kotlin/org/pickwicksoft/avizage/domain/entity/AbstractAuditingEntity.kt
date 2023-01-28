@@ -1,4 +1,4 @@
-package org.pickwicksoft.avizage.domain
+package org.pickwicksoft.avizage.domain.entity
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import org.springframework.data.annotation.CreatedBy

@@ -1,7 +1,7 @@
 package org.pickwicksoft.avizage.web.rest
 
 import org.pickwicksoft.avizage.config.LOGIN_REGEX
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.pickwicksoft.avizage.repository.UserRepository
 import org.pickwicksoft.avizage.security.ADMIN
 import org.pickwicksoft.avizage.service.MailService
@@ -37,7 +37,7 @@ import javax.validation.constraints.Pattern
 /**
  * REST controller for managing users.
  *
- * This class accesses the {@link org.pickwicksoft.avizage.domain.User} entity, and needs to fetch its collection of authorities.
+ * This class accesses the {@link org.pickwicksoft.avizage.domain.entity.User} entity, and needs to fetch its collection of authorities.
  *
  * For a normal use-case, it would be better to have an eager relationship between User and Authority,
  * and send everything to the client side: there would be no View Model and DTO, a lot less code, and an outer-join

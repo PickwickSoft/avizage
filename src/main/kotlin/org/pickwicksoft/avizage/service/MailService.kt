@@ -1,6 +1,6 @@
 package org.pickwicksoft.avizage.service
 
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.slf4j.LoggerFactory
 import org.springframework.context.MessageSource
 import org.springframework.mail.MailException

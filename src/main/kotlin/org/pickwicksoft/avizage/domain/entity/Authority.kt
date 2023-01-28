@@ -1,4 +1,4 @@
-package org.pickwicksoft.avizage.domain
+package org.pickwicksoft.avizage.domain.entity
 
 import java.io.Serializable
 import javax.persistence.Column

@@ -1,7 +1,7 @@
 package org.pickwicksoft.avizage.service.dto
 
 import org.pickwicksoft.avizage.config.LOGIN_REGEX
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import java.io.Serializable
 import java.time.Instant
 import javax.validation.constraints.*

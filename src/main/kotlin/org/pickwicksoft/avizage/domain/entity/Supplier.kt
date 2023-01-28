@@ -1,4 +1,4 @@
-package org.pickwicksoft.avizage.domain
+package org.pickwicksoft.avizage.domain.entity
 
 import org.pickwicksoft.avizage.config.PHONE_REGEX
 import javax.persistence.*

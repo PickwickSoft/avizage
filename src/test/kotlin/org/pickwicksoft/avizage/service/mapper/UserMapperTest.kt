@@ -4,7 +4,7 @@ import org.apache.commons.lang3.RandomStringUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.pickwicksoft.avizage.service.dto.AdminUserDTO
 import kotlin.test.assertNotNull
 import kotlin.test.assertNull

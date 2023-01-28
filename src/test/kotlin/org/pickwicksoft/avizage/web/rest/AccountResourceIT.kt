@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.pickwicksoft.avizage.IntegrationTest
 import org.pickwicksoft.avizage.config.DEFAULT_LANGUAGE
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.pickwicksoft.avizage.repository.AuthorityRepository
 import org.pickwicksoft.avizage.repository.UserRepository
 import org.pickwicksoft.avizage.security.ADMIN
