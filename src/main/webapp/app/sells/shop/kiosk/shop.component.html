@@ -6,26 +6,26 @@
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>#</th>
             <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-            <td mat-footer-cell *matFooterCellDef>Total</td>
+            <td *matFooterCellDef jhiTranslate="shop.product.total" mat-footer-cell>Total</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th *matHeaderCellDef jhiTranslate="shop.product.name" mat-header-cell>Name</th>
             <td mat-cell *matCellDef="let element">{{ element.name }}</td>
             <td mat-footer-cell *matFooterCellDef></td>
           </ng-container>
 
           <!-- Weight Column -->
           <ng-container matColumnDef="qty">
-            <th mat-header-cell *matHeaderCellDef>Qty.</th>
+            <th *matHeaderCellDef jhiTranslate="shop.product.qty" mat-header-cell>Qty.</th>
             <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
             <td mat-footer-cell *matFooterCellDef></td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <th *matHeaderCellDef jhiTranslate="shop.product.price" mat-header-cell>Price</th>
             <td mat-cell *matCellDef="let element">{{ element.price * element.qty | currency }}</td>
             <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
           </ng-container>
@@ -33,7 +33,13 @@
           <!-- Symbol Column -->
           <ng-container matColumnDef="toolbar">
             <th *matHeaderCellDef mat-header-cell>
-              <button (click)="emptyCart()" [disabled]="cart.data.length === 0" aria-label="Empty cart" mat-button>
+              <button
+                (click)="emptyCart()"
+                [disabled]="cart.data.length === 0"
+                aria-label="Empty cart"
+                jhiTranslate="shop.cart.empty"
+                mat-stroked-button
+              >
                 <mat-icon>delete</mat-icon>
                 Empty cart
               </button>
@@ -216,21 +222,28 @@
                 <rect fill="#f2f2f2" height="18.5" width="2" x="218.2485" y="134.90779" />
                 <rect fill="#f2f2f2" height="18.5" width="2" x="279.2485" y="134.90779" />
               </svg>
-              <p class="text-center empty">Your shopping cart is empty!</p>
+              <p class="text-center empty" jhiTranslate="shop.cart.isEmpty">Your shopping cart is empty!</p>
             </td>
           </tr>
           <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
         </table>
-        <button (click)="checkOut()" [disabled]="cart.data.length === 0" class="mt-4 full-width checkout" color="primary" mat-flat-button>
+        <button
+          (click)="checkOut()"
+          [disabled]="cart.data.length === 0"
+          class="mt-4 full-width checkout"
+          color="primary"
+          jhiTranslate="shop.cart.checkout"
+          mat-flat-button
+        >
           <fa-icon icon="shopping-cart"></fa-icon>
           Checkout
         </button>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="container">
+      <div class="container mt-4">
         <div class="row g-3">
-          <div class="col-md-2" *ngFor="let product of products">
+          <div class="col-6 col-md-2" *ngFor="let product of products">
             <mat-card class="product" (click)="addProductToCart(product)">
               <mat-card-content>
                 <p class="name">{{ product.name }}</p>
@@ -239,7 +252,7 @@
               </mat-card-content>
             </mat-card>
           </div>
-          <div class="col-md-2" *ngFor="let category of categories">
+          <div class="col-6 col-md-2" *ngFor="let category of categories">
             <mat-card class="product" (click)="addCategoryToCart(category)">
               <mat-card-content>
                 <p class="name">{{ category.name }}</p>

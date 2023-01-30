@@ -1,0 +1,20 @@
+{
+  "shop": {
+    "title": "Shop",
+    "product": {
+      "total": "Total",
+      "name": "Name",
+      "price": "Price",
+      "qty": "Qty"
+    },
+    "cart": {
+      "title": "Shopping Cart",
+      "empty": "Empty Cart",
+      "isEmpty": "Your cart is empty",
+      "total": "Total",
+      "remove": "Remove",
+      "checkout": "Checkout",
+      "add": "Add to Cart"
+    }
+  }
+}

@@ -78,3 +78,18 @@ td.mat-footer-cell {
   font-weight: 500;
   color: hsl(243, 17%, 22%);
 }
+
+@media (max-width: 600px) {
+  .empty {
+    font-size: 15px;
+  }
+
+  td.mat-cell,
+  td.mat-footer-cell {
+    font-size: 10px;
+  }
+
+  .mat-icon-button {
+    padding: 0px;
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "shop": {
+    "title": "Shop",
+    "product": {
+      "total": "Gesamt",
+      "name": "Name",
+      "price": "Preis",
+      "qty": "Menge"
+    },
+    "cart": {
+      "title": "Warenkorb",
+      "empty": "Leere Warenkorb",
+      "isEmpty": "Ihr Warenkorb ist leer",
+      "total": "Gesamt",
+      "remove": "Entfernen",
+      "checkout": "Kasse",
+      "add": "Zum Warenkorb hinzufügen"
+    }
+  }
+}
