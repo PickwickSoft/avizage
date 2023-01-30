@@ -26,4 +26,3 @@ class Bill(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Int? = null
 )
-
