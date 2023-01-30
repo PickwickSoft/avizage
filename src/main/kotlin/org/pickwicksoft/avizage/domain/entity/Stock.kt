@@ -15,6 +15,12 @@ class Stock(
     @Column(nullable = false)
     val quantity: Double,
 
+    @Column(nullable = false)
+    val purchasePrice: Double,
+
+    @Column(nullable = false)
+    val salePrice: Double,
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null

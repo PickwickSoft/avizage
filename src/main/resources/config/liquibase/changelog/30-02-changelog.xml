@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.15.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1675089391389-1" author="stefan (generated)">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_category"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="icon_name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1675089391389-2" author="stefan (generated)">
+        <createTable tableName="default_category">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_default_category"/>
+            </column>
+            <column name="category_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1675089391389-3" author="stefan (generated)">
+        <createTable tableName="default_product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_default_product"/>
+            </column>
+            <column name="product_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1675089391389-4" author="stefan (generated)">
+        <addColumn tableName="product">
+            <column name="category_id" type="BIGINT"/>
+            <column name="icon_name" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1675089391389-6" author="stefan (generated)">
+        <addColumn tableName="stock">
+            <column name="purchase_price" type="DOUBLE"/>
+            <column name="sale_price" type="DOUBLE"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1675089391389-7" author="stefan (generated)">
+        <addNotNullConstraint columnName="purchase_price" tableName="stock"/>
+    </changeSet>
+    <changeSet id="1675089391389-9" author="stefan (generated)">
+        <addNotNullConstraint columnName="sale_price" tableName="stock"/>
+    </changeSet>
+    <changeSet id="1675089391389-10" author="stefan (generated)">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="default_category"
+                                 constraintName="FK_DEFAULT_CATEGORY_ON_CATEGORY" referencedColumnNames="id"
+                                 referencedTableName="category"/>
+    </changeSet>
+    <changeSet id="1675089391389-11" author="stefan (generated)">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="default_product"
+                                 constraintName="FK_DEFAULT_PRODUCT_ON_PRODUCT" referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+    <changeSet id="1675089391389-12" author="stefan (generated)">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product"
+                                 constraintName="FK_PRODUCT_ON_CATEGORY" referencedColumnNames="id"
+                                 referencedTableName="category"/>
+    </changeSet>
+
+</databaseChangeLog>
