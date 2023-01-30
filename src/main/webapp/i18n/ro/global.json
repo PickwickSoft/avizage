@@ -14,7 +14,13 @@
       },
       "selling": {
         "main": "Vânzări",
-        "interface": "Interfață"
+        "interface": "Interfață",
+        "report": {
+          "billing": "Facturare",
+          "sales": "Vânzări",
+          "inventory": "Inventar",
+          "profit": "Profit"
+        }
       },
       "account": {
         "main": "Cont",

@@ -8,7 +8,14 @@ import { RouterModule } from '@angular/router';
         path: 'shop',
         loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule),
         data: {
-          pageTitle: 'shop.home.title',
+          pageTitle: 'shop.title',
+        },
+      },
+      {
+        path: 'report/billing',
+        loadChildren: () => import('./report/report.module').then(m => m.ReportModule),
+        data: {
+          pageTitle: 'shop.title',
         },
       },
     ]),

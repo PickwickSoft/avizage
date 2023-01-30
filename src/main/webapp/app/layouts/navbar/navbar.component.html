@@ -49,6 +49,12 @@
                 <span jhiTranslate="global.menu.selling.interface">Sell Interface</span>
               </a>
             </li>
+            <li>
+              <a (click)="collapseNavbar()" class="dropdown-item" routerLink="sells/report/billing" routerLinkActive="active">
+                <fa-icon [fixedWidth]="true" icon="file-invoice-dollar"></fa-icon>
+                <span jhiTranslate="global.menu.selling.report.billing">Rechnungsbericht</span>
+              </a>
+            </li>
           </ul>
         </li>
         <li
