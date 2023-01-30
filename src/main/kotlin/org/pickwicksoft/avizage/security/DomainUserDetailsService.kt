@@ -1,7 +1,7 @@
 package org.pickwicksoft.avizage.security
 
 import org.hibernate.validator.internal.constraintvalidators.hv.EmailValidator
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.pickwicksoft.avizage.repository.UserRepository
 import org.slf4j.LoggerFactory
 import org.springframework.security.core.authority.SimpleGrantedAuthority

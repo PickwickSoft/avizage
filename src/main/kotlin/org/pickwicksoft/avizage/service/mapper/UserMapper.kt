@@ -4,8 +4,8 @@ import org.mapstruct.BeanMapping
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings
 import org.mapstruct.Named
-import org.pickwicksoft.avizage.domain.Authority
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.Authority
+import org.pickwicksoft.avizage.domain.entity.User
 import org.pickwicksoft.avizage.service.dto.AdminUserDTO
 import org.pickwicksoft.avizage.service.dto.UserDTO
 import org.springframework.stereotype.Service

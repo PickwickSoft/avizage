@@ -1,6 +1,6 @@
 package org.pickwicksoft.avizage.repository
 
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.springframework.cache.annotation.Cacheable
 import org.springframework.data.domain.*
 import org.springframework.data.jpa.repository.EntityGraph

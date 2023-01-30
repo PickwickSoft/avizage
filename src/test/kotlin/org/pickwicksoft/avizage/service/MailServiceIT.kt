@@ -11,7 +11,7 @@ import org.mockito.Mockito.*
 import org.mockito.Mockito.atLeastOnce
 import org.pickwicksoft.avizage.IntegrationTest
 import org.pickwicksoft.avizage.config.DEFAULT_LANGUAGE
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.mail.MailSendException

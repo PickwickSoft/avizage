@@ -1,6 +1,6 @@
 package org.pickwicksoft.avizage.service.dto
 
-import org.pickwicksoft.avizage.domain.User
+import org.pickwicksoft.avizage.domain.entity.User
 import java.io.Serializable
 /**
  * A DTO representing a user, with only the public attributes.
