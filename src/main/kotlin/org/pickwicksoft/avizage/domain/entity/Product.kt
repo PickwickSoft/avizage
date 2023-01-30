@@ -9,11 +9,16 @@ class Product(
     @Column(length = 50, nullable = false)
     val name: String,
 
+    val iconName: String? = null,
+
     @Column(length = 100)
     val description: String?,
 
     @ManyToOne
     val unit: Unit,
+
+    @ManyToOne
+    val category: Category,
 
     @OneToMany(mappedBy = "product")
     var stocks: MutableSet<Stock> = mutableSetOf(),
