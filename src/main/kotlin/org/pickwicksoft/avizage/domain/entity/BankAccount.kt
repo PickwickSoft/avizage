@@ -7,7 +7,7 @@ import javax.validation.constraints.Size
 
 @Entity
 @Table(name = "bank_account")
-class BankAccount (
+class BankAccount(
 
     @field:Pattern(regexp = IBAN_REGEX)
     @Column(length = 30, nullable = false)

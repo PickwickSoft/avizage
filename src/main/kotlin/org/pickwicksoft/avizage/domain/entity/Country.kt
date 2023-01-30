@@ -6,10 +6,10 @@ import javax.persistence.*
 @Table(name = "country")
 class Country(
 
-    @Column(length = 3, nullable = false)
+    @Column(length = 2, nullable = false)
     var code: String,
 
-    @Column(length = 20, nullable = false)
+    @Column(length = 100, nullable = false)
     val name: String,
 
     @Id

@@ -3,8 +3,8 @@ package org.pickwicksoft.avizage.domain.entity
 import javax.persistence.*
 
 @Entity
-@Table(name = "stock", uniqueConstraints = [ UniqueConstraint(columnNames = ["product", "storage"])])
-class Stock (
+@Table(name = "stock")
+class Stock(
 
     @ManyToOne
     val product: Product,

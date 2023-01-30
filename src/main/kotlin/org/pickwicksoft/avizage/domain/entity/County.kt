@@ -4,7 +4,7 @@ import javax.persistence.*
 
 @Entity
 @Table(name = "county")
-class County (
+class County(
 
     @Column(length = 12, nullable = false)
     val code: String,

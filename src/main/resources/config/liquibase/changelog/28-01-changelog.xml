@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.15.xsd"
+    objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1674928316553-2" author="garlonta (generated)">
+        <createTable tableName="address">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_address"/>
+            </column>
+            <column name="street_and_number" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="zip" type="VARCHAR(7)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="county_id" type="INT"/>
+            <column name="country_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-3" author="garlonta (generated)">
+        <createTable tableName="bank_account">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_bank_account"/>
+            </column>
+            <column name="iban" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bank_name" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-4" author="garlonta (generated)">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_country"/>
+            </column>
+            <column name="code" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-5" author="garlonta (generated)">
+        <createTable tableName="county">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_county"/>
+            </column>
+            <column name="code" type="VARCHAR(12)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-6" author="garlonta (generated)">
+        <createTable tableName="jhi_date_time_wrapper">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_jhi_date_time_wrapper"/>
+            </column>
+            <column name="instant" type="DATETIME"/>
+            <column name="local_date_time" type="DATETIME"/>
+            <column name="offset_date_time" type="timestamp with time zone"/>
+            <column name="zoned_date_time" type="timestamp with time zone"/>
+            <column name="local_time" type="TIME"/>
+            <column name="offset_time" type="time with time zone"/>
+            <column name="local_date" type="DATE"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-7" author="garlonta (generated)">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_product"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(100)"/>
+            <column name="unit_id" type="INT"/>
+            <column name="bar_code" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-8" author="garlonta (generated)">
+        <createTable tableName="sale">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_sale"/>
+            </column>
+            <column name="date" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT"/>
+            <column name="storage_id" type="INT"/>
+            <column name="product_id" type="BIGINT"/>
+            <column name="unit_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-9" author="garlonta (generated)">
+        <createTable tableName="stock">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_stock"/>
+            </column>
+            <column name="product_id" type="BIGINT"/>
+            <column name="storage_id" type="INT"/>
+            <column name="quantity" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-10" author="garlonta (generated)">
+        <createTable tableName="storage">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_storage"/>
+            </column>
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="description" type="VARCHAR(100)"/>
+            <column name="address_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-11" author="garlonta (generated)">
+        <createTable tableName="supplier">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_supplier"/>
+            </column>
+            <column name="cif_cnp" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contact_person" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phone" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-12" author="garlonta (generated)">
+        <createTable tableName="supplier_accounts">
+            <column name="supplier_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_supplier_accounts"/>
+            </column>
+            <column name="accounts_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_supplier_accounts"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-13" author="garlonta (generated)">
+        <createTable tableName="supplier_addresses">
+            <column name="supplier_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_supplier_addresses"/>
+            </column>
+            <column name="addresses_id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_supplier_addresses"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-14" author="garlonta (generated)">
+        <createTable tableName="unit">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_unit"/>
+            </column>
+            <column name="name" type="VARCHAR(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(5)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1674928316553-16" author="garlonta (generated)">
+        <addUniqueConstraint columnNames="accounts_id" constraintName="uc_supplier_accounts_accounts"
+                             tableName="supplier_accounts"/>
+    </changeSet>
+    <changeSet id="1674928316553-17" author="garlonta (generated)">
+        <addUniqueConstraint columnNames="addresses_id" constraintName="uc_supplier_addresses_addresses"
+                             tableName="supplier_addresses"/>
+    </changeSet>
+    <changeSet id="1674928316553-18" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="address"
+                                 constraintName="FK_ADDRESS_ON_COUNTRY" referencedColumnNames="id"
+                                 referencedTableName="country"/>
+    </changeSet>
+    <changeSet id="1674928316553-19" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="county_id" baseTableName="address"
+                                 constraintName="FK_ADDRESS_ON_COUNTY" referencedColumnNames="id"
+                                 referencedTableName="county"/>
+    </changeSet>
+    <changeSet id="1674928316553-20" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="county"
+                                 constraintName="FK_COUNTY_ON_COUNTRY" referencedColumnNames="id"
+                                 referencedTableName="country"/>
+    </changeSet>
+    <changeSet id="1674928316553-21" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="unit_id" baseTableName="product" constraintName="FK_PRODUCT_ON_UNIT"
+                                 referencedColumnNames="id" referencedTableName="unit"/>
+    </changeSet>
+    <changeSet id="1674928316553-22" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="sale" constraintName="FK_SALE_ON_PRODUCT"
+                                 referencedColumnNames="id" referencedTableName="product"/>
+    </changeSet>
+    <changeSet id="1674928316553-23" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="storage_id" baseTableName="sale" constraintName="FK_SALE_ON_STORAGE"
+                                 referencedColumnNames="id" referencedTableName="storage"/>
+    </changeSet>
+    <changeSet id="1674928316553-24" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="sale" constraintName="FK_SALE_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="jhi_user"/>
+    </changeSet>
+    <changeSet id="1674928316553-25" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="stock" constraintName="FK_STOCK_ON_PRODUCT"
+                                 referencedColumnNames="id" referencedTableName="product"/>
+    </changeSet>
+    <changeSet id="1674928316553-26" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="storage_id" baseTableName="stock" constraintName="FK_STOCK_ON_STORAGE"
+                                 referencedColumnNames="id" referencedTableName="storage"/>
+    </changeSet>
+    <changeSet id="1674928316553-27" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="address_id" baseTableName="storage"
+                                 constraintName="FK_STORAGE_ON_ADDRESS" referencedColumnNames="id"
+                                 referencedTableName="address"/>
+    </changeSet>
+    <changeSet id="1674928316553-28" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="accounts_id" baseTableName="supplier_accounts"
+                                 constraintName="fk_supacc_on_bank_account" referencedColumnNames="id"
+                                 referencedTableName="bank_account"/>
+    </changeSet>
+    <changeSet id="1674928316553-29" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="supplier_accounts"
+                                 constraintName="fk_supacc_on_supplier" referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+    </changeSet>
+    <changeSet id="1674928316553-30" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="addresses_id" baseTableName="supplier_addresses"
+                                 constraintName="fk_supadd_on_address" referencedColumnNames="id"
+                                 referencedTableName="address"/>
+    </changeSet>
+    <changeSet id="1674928316553-31" author="garlonta (generated)">
+        <addForeignKeyConstraint baseColumnNames="supplier_id" baseTableName="supplier_addresses"
+                                 constraintName="fk_supadd_on_supplier" referencedColumnNames="id"
+                                 referencedTableName="supplier"/>
+    </changeSet>
+    <changeSet id="1674928316553-33" author="garlonta">
+        <loadData tableName="country" file="config/liquibase/data/country.csv" schemaName="" separator=";"/>
+    </changeSet>
+    <changeSet id="1674928316553-32" author="garlonta">
+        <loadData tableName="county" file="config/liquibase/data/county_code.csv" schemaName="" separator=";"/>
+    </changeSet>
+    <changeSet id="1674928316553-34" author="garlonta">
+        <loadData tableName="unit" file="config/liquibase/data/unit.csv" schemaName="" separator=";"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -16,15 +16,12 @@ class Sale(
     @Column(nullable = false)
     val date: Date,
 
-    @Column(nullable = false)
     @ManyToOne
     val user: User,
 
-    @Column(nullable = false)
     @ManyToOne
     val storage: Storage,
 
-    @Column(nullable = false)
     @ManyToOne
     val product: Product,
 
