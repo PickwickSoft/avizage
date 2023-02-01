@@ -1,6 +1,8 @@
 package org.pickwicksoft.avizage.domain.entity
 
-import java.util.*
+import org.hibernate.annotations.Fetch
+import org.hibernate.annotations.FetchMode
+import java.time.Instant
 import javax.persistence.*
 
 @Entity
@@ -11,9 +13,9 @@ class Bill(
     val number: String,
 
     @Column(nullable = false)
-    val date: Date,
+    val date: Instant? = Instant.now(),
 
-    @Column(nullable = false)
+    @Column(nullable = false, name = "total")
     val value: Double = 0.0,
 
     @ManyToOne

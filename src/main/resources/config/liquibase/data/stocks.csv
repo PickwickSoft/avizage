@@ -1,0 +1,3 @@
+quantity;product_id;purchase_price;sale_price;id;storage_id
+100;1;0.25;1.0;1;1
+2000;1;0.25;0.75;2;2

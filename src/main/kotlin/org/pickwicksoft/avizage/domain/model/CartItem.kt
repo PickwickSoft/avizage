@@ -1,7 +1,7 @@
 package org.pickwicksoft.avizage.domain.model
 
 data class CartItem(
-    val productId: Int,
-    val quantity: Double,
+    val id: Long,
+    val qty: Double,
     val price: Double
 )
