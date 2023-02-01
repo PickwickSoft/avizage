@@ -45,8 +45,6 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    this.products = demoProducts;
-    this.categories = demoCategories;
   }
 
   private loadData() {
