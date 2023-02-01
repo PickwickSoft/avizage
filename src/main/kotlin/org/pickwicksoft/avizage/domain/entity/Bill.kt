@@ -1,7 +1,5 @@
 package org.pickwicksoft.avizage.domain.entity
 
-import org.hibernate.annotations.Fetch
-import org.hibernate.annotations.FetchMode
 import java.time.Instant
 import javax.persistence.*
 

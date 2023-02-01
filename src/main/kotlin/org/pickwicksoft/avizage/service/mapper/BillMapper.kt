@@ -1,5 +1,7 @@
 package org.pickwicksoft.avizage.service.mapper
 
+import org.mapstruct.Mapper
+import org.mapstruct.ReportingPolicy
 import org.pickwicksoft.avizage.domain.entity.Bill
 import org.pickwicksoft.avizage.domain.entity.Sale
 import org.pickwicksoft.avizage.domain.model.CartItem
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 abstract class BillMapper {
 
     @Autowired
