@@ -11,7 +11,13 @@
       },
       "selling": {
         "main": "Verkauf",
-        "interface": "Verkaufsoberfläche"
+        "interface": "Verkaufsoberfläche",
+        "report": {
+          "billing": "Rechnungsbericht",
+          "sales": "Verkaufsbericht",
+          "inventory": "Lagerbericht",
+          "profit": "Gewinnbericht"
+        }
       },
       "account": {
         "main": "Zugang",

@@ -11,7 +11,13 @@
       },
       "selling": {
         "main": "Sell",
-        "interface": "Sell Interface"
+        "interface": "Sell Interface",
+        "report": {
+          "billing": "Billing Report",
+          "sales": "Sales Report",
+          "inventory": "Inventory Report",
+          "profit": "Profit Report"
+        }
       },
       "account": {
         "main": "Account",

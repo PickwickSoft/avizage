@@ -1,7 +1,7 @@
 import { NgModule, LOCALE_ID, DEFAULT_CURRENCY_CODE } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import locale from '@angular/common/locales/en';
+import locale from '@angular/common/locales/de';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
@@ -17,7 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { NgbDateDayjsAdapter } from './config/datepicker-adapter';
 import { fontAwesomeIcons } from './config/font-awesome-icons';
-import { httpInterceptorProviders } from 'app/core/interceptor/index';
+import { httpInterceptorProviders } from './core/interceptor';
 import { MainComponent } from './layouts/main/main.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { FooterComponent } from './layouts/footer/footer.component';
@@ -41,7 +41,7 @@ import { ErrorComponent } from './layouts/error/error.component';
   ],
   providers: [
     Title,
-    { provide: LOCALE_ID, useValue: 'en' },
+    { provide: LOCALE_ID, useValue: 'de' },
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     {
       provide: DEFAULT_CURRENCY_CODE,

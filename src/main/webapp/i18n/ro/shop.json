@@ -1,0 +1,20 @@
+{
+  "shop": {
+    "title": "Shop",
+    "product": {
+      "total": "Total",
+      "name": "Art.",
+      "price": "Preț",
+      "qty": "Buc."
+    },
+    "cart": {
+      "title": "Coșul de cumpărături",
+      "empty": "Goliți",
+      "isEmpty": "Coșul de cumpărături este gol",
+      "total": "Total",
+      "remove": "Eliminați",
+      "checkout": "Finalizare comandă",
+      "add": "Adăugați în coș"
+    }
+  }
+}

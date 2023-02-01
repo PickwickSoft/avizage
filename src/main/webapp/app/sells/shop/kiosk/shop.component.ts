@@ -5,22 +5,28 @@ import { IProduct } from '../../../entities/product/product.model';
 import { ICategory } from '../../../entities/category/category.model';
 import { MatDialogService } from '../../../shared/dialog/mat-dialog.service';
 import { PriceDialogComponent } from '../price-dialog/price-dialog.component';
+3;
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.component';
+import { IBill } from '../../../entities/bill/bill.model';
+import { ShopService } from '../../../entities/product/shop.service';
+import { HttpResponse } from '@angular/common/http';
 
 const demoProducts: IProduct[] = [
-  { id: 1, name: 'Book 1', price: 10 },
-  { id: 2, name: 'Book 2', price: 20 },
-  { id: 3, name: 'Book 3', price: 30 },
-  { id: 4, name: 'Book 4', price: 40 },
-  { id: 5, name: 'Book 5', price: 50 },
-  { id: 6, name: 'Book 6', price: 60 },
+  { id: 1, name: 'Book 1', price: 10, iconName: 'book' },
+  { id: 2, name: 'Book 2', price: 20, iconName: 'cloud' },
+  { id: 3, name: 'Book 3', price: 30, iconName: 'book' },
+  { id: 4, name: 'Book 4', price: 40, iconName: 'book' },
+  { id: 5, name: 'Book 5', price: 50, iconName: 'book' },
+  { id: 6, name: 'Book 6', price: 60, iconName: 'book' },
 ];
 
 const demoCategories: ICategory[] = [
-  { id: 1000, name: 'Category 1' },
-  { id: 2000, name: 'Category 2' },
-  { id: 3000, name: 'Category 3' },
-  { id: 4000, name: 'Category 4' },
-  { id: 5000, name: 'Category 5' },
+  { id: 1000, name: 'Category 1', iconName: 'book' },
+  { id: 2000, name: 'Category 2', iconName: 'book' },
+  { id: 3000, name: 'Category 3', iconName: 'book' },
+  { id: 4000, name: 'Category 4', iconName: 'book' },
+  { id: 5000, name: 'Category 5', iconName: 'book' },
   { id: 6000, name: 'Category 6' },
 ];
 
@@ -30,16 +36,26 @@ const demoCategories: ICategory[] = [
   styleUrls: ['./shop.component.scss'],
 })
 export class ShopComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'qty', 'price'];
+  displayedColumns: string[] = ['id', 'name', 'qty', 'price', 'toolbar'];
   cart: MatTableDataSource<ICartItem> = new MatTableDataSource<ICartItem>([]);
   products: IProduct[] = [];
   categories: ICategory[] = [];
 
-  constructor(private dialogService: MatDialogService) {}
+  constructor(private dialogService: MatDialogService, private shopService: ShopService) {}
 
   ngOnInit(): void {
+    this.loadData();
     this.products = demoProducts;
     this.categories = demoCategories;
+  }
+
+  private loadData() {
+    this.shopService.getDefaultProducts().subscribe((res: HttpResponse<IProduct[]>) => {
+      this.products = res.body || [];
+    });
+    this.shopService.getDefaultCategories().subscribe((res: HttpResponse<ICategory[]>) => {
+      this.categories = res.body || [];
+    });
   }
 
   getTotalCost() {
@@ -73,5 +89,40 @@ export class ShopComponent implements OnInit {
         this.addProductFromCategoryToCart(category, price);
       }
     });
+  }
+
+  deleteCartItems(cartItem: ICartItem) {
+    this.cart.data = this.cart.data.filter(item => item !== cartItem);
+    this.cart._updateChangeSubscription();
+  }
+
+  removeOneCartItem(cartItem: ICartItem) {
+    if (cartItem.qty > 1) {
+      cartItem.qty--;
+    } else {
+      this.deleteCartItems(cartItem);
+    }
+    this.cart._updateChangeSubscription();
+  }
+
+  emptyCart() {
+    this.cart.data = [];
+    this.cart._updateChangeSubscription();
+  }
+
+  increaseOneCartItem(cartItem: ICartItem) {
+    cartItem.qty++;
+    this.cart._updateChangeSubscription();
+  }
+
+  checkOut() {
+    this.shopService.checkout(this.cart.data).subscribe((bill: HttpResponse<IBill>) => {
+      this.dialogService.openDialog(CheckoutDialogComponent, { data: bill.body });
+    });
+    this.emptyCart();
+  }
+
+  iconToProp(iconName?: string): IconProp {
+    return iconName as IconProp;
   }
 }
