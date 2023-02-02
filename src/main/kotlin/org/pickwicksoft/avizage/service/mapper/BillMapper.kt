@@ -4,7 +4,7 @@ import org.mapstruct.Mapper
 import org.mapstruct.ReportingPolicy
 import org.pickwicksoft.avizage.domain.entity.Bill
 import org.pickwicksoft.avizage.domain.entity.Sale
-import org.pickwicksoft.avizage.domain.model.CartItem
+import org.pickwicksoft.avizage.domain.model.BillItem
 import org.pickwicksoft.avizage.service.UserService
 import org.pickwicksoft.avizage.service.dto.BillDto
 import org.springframework.beans.factory.annotation.Autowired
@@ -34,16 +34,21 @@ abstract class BillMapper {
             created = bill.date,
             totalPrice = bill.value,
             userName = bill.user.login.orEmpty(),
-            products = salesToCartItems(bill.sales)
+            products = salesToBillItems(bill.sales)
         )
     }
 
-    private fun salesToCartItems(sales: MutableSet<Sale>): MutableSet<CartItem> {
-        val cartItems = mutableSetOf<CartItem>()
+    private fun salesToBillItems(sales: MutableSet<Sale>): MutableSet<BillItem> {
+        val billItems = mutableSetOf<BillItem>()
         sales.forEach { sale ->
-            cartItems.add(CartItem(getIdOfProduct(sale), sale.quantity, sale.unitPrice))
+            sale.product?.let {
+                billItems.add(BillItem(getIdOfProduct(sale), it.name, sale.quantity, sale.unitPrice))
+            }
+            sale.category?.let {
+                billItems.add(BillItem(getIdOfProduct(sale), it.name, sale.quantity, sale.unitPrice))
+            }
         }
-        return cartItems
+        return billItems
     }
 
     private fun getIdOfProduct(sale: Sale): Long {

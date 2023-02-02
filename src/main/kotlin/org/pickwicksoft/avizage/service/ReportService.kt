@@ -5,7 +5,7 @@ import org.pickwicksoft.avizage.repository.SaleRepository
 import org.springframework.stereotype.Service
 
 @Service
-class ReportService (
+class ReportService(
     private val saleRepository: SaleRepository
 ) {
     fun getSalesOfToday(): List<Sale> {

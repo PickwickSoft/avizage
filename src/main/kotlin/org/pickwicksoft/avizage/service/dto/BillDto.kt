@@ -1,6 +1,6 @@
 package org.pickwicksoft.avizage.service.dto
 
-import org.pickwicksoft.avizage.domain.model.CartItem
+import org.pickwicksoft.avizage.domain.model.BillItem
 import java.time.Instant
 
 data class BillDto(
@@ -9,5 +9,5 @@ data class BillDto(
     val created: Instant? = Instant.now(),
     val totalPrice: Double = 0.0,
     val userName: String,
-    val products: MutableSet<CartItem> = mutableSetOf()
+    val products: MutableSet<BillItem> = mutableSetOf()
 )
