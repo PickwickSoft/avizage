@@ -5,7 +5,7 @@ import java.io.Serializable
 /**
  * A DTO for the {@link org.pickwicksoft.avizage.domain.entity.Product} entity
  */
-data class ProductDto(
+data class DefaultProductDto(
     val name: String? = null,
     val iconName: String? = null,
     val price: Double?,

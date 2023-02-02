@@ -1,7 +1,7 @@
 package org.pickwicksoft.avizage.service
 
 import org.pickwicksoft.avizage.domain.entity.Category
-import org.pickwicksoft.avizage.domain.entity.Product
+import org.pickwicksoft.avizage.domain.entity.DefaultProduct
 import org.pickwicksoft.avizage.repository.DefaultCategoryRepository
 import org.pickwicksoft.avizage.repository.DefaultProductRepository
 import org.springframework.stereotype.Service
@@ -14,11 +14,7 @@ class DefaultDataService(
     private val defaultCategoryRepository: DefaultCategoryRepository,
 ) {
 
-    fun getDefaultProducts(): List<Product> {
-        return defaultProductRepository.findAll().map { product ->
-            product.product
-        }
-    }
+    fun getDefaultProducts(): List<DefaultProduct> = defaultProductRepository.findAll()
 
     fun getDefaultCategories(): List<Category> {
         return defaultCategoryRepository.findAll().map { category ->

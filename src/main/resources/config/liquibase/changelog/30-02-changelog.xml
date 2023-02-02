@@ -30,6 +30,7 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_default_product"/>
             </column>
             <column name="product_id" type="BIGINT"/>
+            <column name="storage_id" type="BIGINT"/>
         </createTable>
     </changeSet>
     <changeSet id="1675089391389-4" author="stefan (generated)">
@@ -59,6 +60,9 @@
         <addForeignKeyConstraint baseColumnNames="product_id" baseTableName="default_product"
                                  constraintName="FK_DEFAULT_PRODUCT_ON_PRODUCT" referencedColumnNames="id"
                                  referencedTableName="product"/>
+        <addForeignKeyConstraint baseColumnNames="storage_id" baseTableName="default_product"
+                                 constraintName="FK_DEFAULT_PRODUCT_ON_STORAGE" referencedColumnNames="id"
+                                 referencedTableName="storage"/>
     </changeSet>
     <changeSet id="1675089391389-12" author="stefan (generated)">
         <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product"
