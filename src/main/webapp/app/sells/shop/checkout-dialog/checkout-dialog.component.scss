@@ -1,0 +1,19 @@
+.mat-dialog-content {
+  width: 500px;
+  max-width: 80vw;
+}
+
+table {
+  width: 100%;
+}
+
+td.mat-footer-cell {
+  font-weight: bold;
+}
+
+@media (max-width: 500px) {
+  tr th:nth-child(2),
+  tr td:nth-child(2) {
+    display: none;
+  }
+}

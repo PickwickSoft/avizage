@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Checkout successful! Bill</h2>
+<h2 mat-dialog-title>Bill {{ bill.id }}</h2>
 <mat-dialog-content class="mat-typography">
   <jhi-alert-error></jhi-alert-error>
 </mat-dialog-content>
@@ -37,7 +37,7 @@
   </table>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-flat-button color="primary">
+  <button mat-stroke-button mat-dialog-close color="primary">
     <span>Close</span>
   </button>
 </mat-dialog-actions>
