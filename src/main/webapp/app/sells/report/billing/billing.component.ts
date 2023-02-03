@@ -38,12 +38,12 @@ export class BillingComponent implements OnInit {
   }
 
   private loadAll() {
+    this.report.data = testReport.items;
+    this.total = testReport.total;
     this.reportService.getTodayReport().subscribe((res: HttpResponse<IReport>) => {
       this.report.data = res.body?.items || [];
       this.total = res.body?.total || 0;
     });
-    this.report.data = testReport.items;
-    this.total = testReport.total;
   }
 
   shareReport() {
