@@ -86,6 +86,10 @@ Generic styles
   width: 60% !important;
 }
 
+.w-100 {
+  width: 100% !important;
+}
+
 .break {
   white-space: normal;
   word-break: break-all;
@@ -102,6 +106,10 @@ Generic styles
 
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+td.mat-footer-cell {
+  font-weight: bold;
 }
 
 .hand,

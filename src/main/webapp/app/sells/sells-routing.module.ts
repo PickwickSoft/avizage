@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
         path: 'report/billing',
         loadChildren: () => import('./report/report.module').then(m => m.ReportModule),
         data: {
-          pageTitle: 'shop.title',
+          pageTitle: 'report.billing.report',
         },
       },
     ]),
