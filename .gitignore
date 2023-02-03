@@ -58,6 +58,7 @@ local.properties
 # IntelliJ
 ######################
 .idea/
+.jpb/
 *.iml
 *.iws
 *.ipr
@@ -157,3 +158,8 @@ Desktop.ini
 ######################
 /coverage/
 /.nyc_output/
+
+######################
+# H2 Server Properties
+######################
+src/main/resources/.h2.server.properties
