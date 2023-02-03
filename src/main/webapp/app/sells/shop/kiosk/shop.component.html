@@ -58,8 +58,8 @@
             <td *matFooterCellDef mat-footer-cell></td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          <tr mat-header-row *matHeaderRowDef="getDataSource()"></tr>
+          <tr mat-row *matRowDef="let row; columns: getDataSource()"></tr>
           <tr *matNoDataRow class="mat-row">
             <td class="mat-cell pt-2" colspan="5">
               <svg data-name="Layer 1" height="100%" viewBox="0 0 896 747.97143" width="100%" xmlns="http://www.w3.org/2000/svg">
@@ -225,7 +225,7 @@
               <p class="text-center empty" jhiTranslate="shop.cart.isEmpty">Your shopping cart is empty!</p>
             </td>
           </tr>
-          <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+          <tr mat-footer-row *matFooterRowDef="getDataSource()"></tr>
         </table>
         <button
           (click)="checkOut()"
@@ -242,7 +242,7 @@
     </div>
     <div class="col-md-8">
       <div class="container mt-4">
-        <div class="row g-3">
+        <div class="row mx-auto g-3">
           <div class="col-6 col-md-2" *ngFor="let product of products">
             <mat-card class="product" (click)="addProductToCart(product)">
               <mat-card-content>
@@ -256,7 +256,7 @@
             <mat-card class="product" (click)="addCategoryToCart(category)">
               <mat-card-content>
                 <p class="name">{{ category.name }}</p>
-                <fa-icon *ngIf="category.iconName" [icon]="iconToProp(category.iconName)" class="bg-icon"></fa-icon>
+                <fa-icon *ngIf="category.iconName" class="bg-icon"></fa-icon>
               </mat-card-content>
             </mat-card>
           </div>

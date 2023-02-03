@@ -4,8 +4,15 @@
     <database-infos>
       <database-info>
         <option name="enabled" value="true" />
+        <dbms-id>postgres</dbms-id>
+      </database-info>
+      <database-info>
+        <option name="enabled" value="true" />
         <dbms-id>h2</dbms-id>
       </database-info>
     </database-infos>
+  </component>
+  <component name="JpaPluginProjectSettings">
+    <option name="lastSelectedLanguage" value="Kotlin" />
   </component>
 </project>
