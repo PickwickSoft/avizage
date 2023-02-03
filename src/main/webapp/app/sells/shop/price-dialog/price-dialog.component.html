@@ -1,7 +1,7 @@
-<h2 mat-dialog-title>Enter price for {{ category.name }}</h2>
+<h2 mat-dialog-title><span jhiTranslate="shop.price.enterFor">Enter price for</span> {{ category.name }}</h2>
 <mat-dialog-content class="mat-typography">
   <jhi-alert-error></jhi-alert-error>
-  <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
+  <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Price input">
     <div class="btn-group">
       <input class="text-center form-control-lg mb-2" id="code" [(ngModel)]="price" />
     </div>
@@ -35,7 +35,7 @@
     [mat-dialog-close]="parseFloat(price)"
     [disabled]="price === '' || price === '.'"
   >
-    <span>Add to cart</span>
+    <span jhiTranslate="shop.cart.add">Add to cart</span>
   </button>
   <button mat-stroked-button mat-dialog-close class="touch-btn" [mat-dialog-close]="-1">
     <span jhiTranslate="entity.action.cancel">Cancel</span>

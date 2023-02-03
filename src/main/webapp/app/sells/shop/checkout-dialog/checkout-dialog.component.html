@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Bill {{ bill.id }}</h2>
-<p>Employee: {{ bill.userName }}</p>
+<h2 mat-dialog-title><span jhiTranslate="shop.checkout.bill">Bill</span> Nr. {{ bill.id }}</h2>
+<p><span class="salesperson" jhiTranslate="shop.checkout.salesperson">Salesperson</span>: {{ bill.userName }}</p>
 <mat-dialog-content class="mat-typography">
   <jhi-alert-error></jhi-alert-error>
 </mat-dialog-content>
@@ -8,26 +8,26 @@
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>#</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
-      <td mat-footer-cell *matFooterCellDef>Total</td>
+      <td mat-footer-cell *matFooterCellDef jhiTranslate="shop.product.total">Total</td>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <th mat-header-cell *matHeaderCellDef jhiTranslate="shop.product.name">Name</th>
       <td mat-cell *matCellDef="let element">{{ element.name }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="qty">
-      <th mat-header-cell *matHeaderCellDef>Qty.</th>
+      <th mat-header-cell *matHeaderCellDef jhiTranslate="shop.product.qty">Qty.</th>
       <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
       <td mat-footer-cell *matFooterCellDef></td>
     </ng-container>
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="price">
-      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <th mat-header-cell *matHeaderCellDef jhiTranslate="shop.product.price">Price</th>
       <td mat-cell *matCellDef="let element">{{ element.price * element.qty | currency }}</td>
       <td mat-footer-cell *matFooterCellDef>{{ bill.totalPrice | currency }}</td>
     </ng-container>
@@ -39,6 +39,6 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-stroked-button mat-dialog-close color="primary">
-    <span>Close</span>
+    <span jhiTranslate="entity.action.close">Close</span>
   </button>
 </mat-dialog-actions>
