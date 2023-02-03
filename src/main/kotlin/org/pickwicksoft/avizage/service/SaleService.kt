@@ -8,6 +8,10 @@ import org.pickwicksoft.avizage.domain.model.Cart
 import org.pickwicksoft.avizage.domain.model.CartItem
 import org.pickwicksoft.avizage.repository.*
 import org.springframework.stereotype.Service
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.temporal.ChronoUnit
 
 @Service
 class SaleService(
@@ -28,6 +32,28 @@ class SaleService(
             sales.add(saleRepository.save(sale))
         }
         return createBillFromSales(sales)
+    }
+
+    fun getTodaySales(): List<Sale> {
+        val now = LocalDateTime.now()
+        val startOfDay = LocalDateTime
+            .of(now.year, now.month, now.dayOfMonth, 0, 0)
+            .atZone(ZoneId.systemDefault()).toInstant()
+        return saleRepository.findAll().filter { sale ->
+            sale.date!!.isAfter(startOfDay)
+        }
+    }
+
+    fun getSalesOf(day: Instant): List<Sale> {
+        val requestedDay = LocalDateTime.ofInstant(day, ZoneId.systemDefault())
+        val startOfDay = LocalDateTime
+            .of(requestedDay.year, requestedDay.month, requestedDay.dayOfMonth, 0, 0, 0)
+            .atZone(ZoneId.systemDefault()).toInstant()
+        val startOfNextDay = startOfDay.plus(1, ChronoUnit.DAYS)
+
+        return saleRepository.findAll().filter { sale ->
+            sale.date!!.isAfter(startOfDay) && sale.date!!.isBefore(startOfNextDay)
+        }
     }
 
     private fun createSaleFromCartItem(item: CartItem): Sale = Sale(
