@@ -19,8 +19,9 @@ td.mat-footer-cell {
   font-size: 17px;
 }
 
-td.mat-footer-cell {
-  font-weight: bold;
+th.mat-header-cell:last-of-type,
+td.mat-cell:last-of-type {
+  text-align: right;
 }
 
 .product {
@@ -84,12 +85,17 @@ td.mat-footer-cell {
     font-size: 15px;
   }
 
+  tr th:nth-child(2),
+  tr td:nth-child(2) {
+    display: none;
+  }
+
   td.mat-cell,
   td.mat-footer-cell {
     font-size: 10px;
   }
 
   .mat-icon-button {
-    padding: 0px;
+    padding: 0;
   }
 }

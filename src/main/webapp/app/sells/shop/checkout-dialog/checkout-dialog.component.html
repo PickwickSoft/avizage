@@ -1,4 +1,5 @@
 <h2 mat-dialog-title>Bill {{ bill.id }}</h2>
+<p>Employee: {{ bill.userName }}</p>
 <mat-dialog-content class="mat-typography">
   <jhi-alert-error></jhi-alert-error>
 </mat-dialog-content>
@@ -37,7 +38,7 @@
   </table>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-stroke-button mat-dialog-close color="primary">
+  <button mat-stroked-button mat-dialog-close color="primary">
     <span>Close</span>
   </button>
 </mat-dialog-actions>

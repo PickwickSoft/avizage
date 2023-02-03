@@ -28,9 +28,6 @@
   </div>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-  <button mat-stroked-button mat-dialog-close class="touch-btn" [mat-dialog-close]="-1">
-    <span jhiTranslate="entity.action.cancel">Cancel</span>
-  </button>
   <button
     mat-flat-button
     color="primary"
@@ -39,5 +36,8 @@
     [disabled]="price === '' || price === '.'"
   >
     <span>Add to cart</span>
+  </button>
+  <button mat-stroked-button mat-dialog-close class="touch-btn" [mat-dialog-close]="-1">
+    <span jhiTranslate="entity.action.cancel">Cancel</span>
   </button>
 </mat-dialog-actions>
