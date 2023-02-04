@@ -15,6 +15,14 @@
       "remove": "Entfernen",
       "checkout": "Kasse",
       "add": "Zum Warenkorb hinzufügen"
+    },
+    "price": {
+      "enter": "Geben Sie den Preis ein",
+      "enterFor": "Geben Sie den Preis ein für"
+    },
+    "checkout": {
+      "bill": "Rechnung",
+      "salesperson": "Verkäufer"
     }
   }
 }

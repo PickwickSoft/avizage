@@ -8,6 +8,9 @@ class DefaultProduct(
     @OneToOne
     val product: Product,
 
+    @ManyToOne
+    val storage: Storage,
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

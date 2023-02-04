@@ -15,6 +15,14 @@
       "remove": "Remove",
       "checkout": "Checkout",
       "add": "Add to Cart"
+    },
+    "price": {
+      "enter": "Enter Price",
+      "enterFor": "Enter Price for"
+    },
+    "checkout": {
+      "bill": "Bill",
+      "salesperson": "Salesperson"
     }
   }
 }

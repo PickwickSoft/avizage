@@ -47,7 +47,7 @@
             <column name="date" type="DATETIME">
                 <constraints nullable="false"/>
             </column>
-            <column name="value" type="DOUBLE">
+            <column name="total" type="DOUBLE">
                 <constraints nullable="false"/>
             </column>
             <column name="user_id" type="BIGINT"/>

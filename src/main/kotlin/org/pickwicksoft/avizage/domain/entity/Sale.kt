@@ -1,20 +1,14 @@
 package org.pickwicksoft.avizage.domain.entity
 
-import java.util.Date
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.ManyToOne
-import javax.persistence.Table
+import java.time.Instant
+import javax.persistence.*
 
 @Entity
 @Table(name = "sale")
 class Sale(
 
     @Column(nullable = false)
-    val date: Date,
+    val date: Instant? = Instant.now(),
 
     @ManyToOne
     val user: User,
@@ -23,7 +17,10 @@ class Sale(
     val storage: Storage,
 
     @ManyToOne
-    val product: Product,
+    var product: Product? = null,
+
+    @ManyToOne
+    var category: Category? = null,
 
     @Column(nullable = false)
     val unitPrice: Double,

@@ -5,31 +5,11 @@ import { IProduct } from '../../../entities/product/product.model';
 import { ICategory } from '../../../entities/category/category.model';
 import { MatDialogService } from '../../../shared/dialog/mat-dialog.service';
 import { PriceDialogComponent } from '../price-dialog/price-dialog.component';
-3;
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.component';
 import { IBill } from '../../../entities/bill/bill.model';
-import { ShopService } from '../../../entities/product/shop.service';
+import { ShopService } from '../shop.service';
 import { HttpResponse } from '@angular/common/http';
-
-const demoProducts: IProduct[] = [
-  { id: 1, name: 'Book 1', price: 10, iconName: 'book' },
-  { id: 2, name: 'Book 2', price: 20, iconName: 'cloud' },
-  { id: 3, name: 'Book 3', price: 30, iconName: 'book' },
-  { id: 4, name: 'Book 4', price: 40, iconName: 'book' },
-  { id: 5, name: 'Book 5', price: 50, iconName: 'book' },
-  { id: 6, name: 'Book 6', price: 60, iconName: 'book' },
-];
-
-const demoCategories: ICategory[] = [
-  { id: 1000, name: 'Category 1', iconName: 'book' },
-  { id: 2000, name: 'Category 2', iconName: 'book' },
-  { id: 3000, name: 'Category 3', iconName: 'book' },
-  { id: 4000, name: 'Category 4', iconName: 'book' },
-  { id: 5000, name: 'Category 5', iconName: 'book' },
-  { id: 6000, name: 'Category 6' },
-];
-
 @Component({
   selector: 'shop',
   templateUrl: './shop.component.html',
@@ -37,6 +17,7 @@ const demoCategories: ICategory[] = [
 })
 export class ShopComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'qty', 'price', 'toolbar'];
+  displayedColumnsMobile: string[] = ['name', 'id', 'qty', 'price', 'toolbar'];
   cart: MatTableDataSource<ICartItem> = new MatTableDataSource<ICartItem>([]);
   products: IProduct[] = [];
   categories: ICategory[] = [];
@@ -45,8 +26,6 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadData();
-    this.products = demoProducts;
-    this.categories = demoCategories;
   }
 
   private loadData() {
@@ -124,5 +103,12 @@ export class ShopComponent implements OnInit {
 
   iconToProp(iconName?: string): IconProp {
     return iconName as IconProp;
+  }
+
+  getDataSource(): string[] {
+    if (window.innerWidth < 600) {
+      return this.displayedColumnsMobile;
+    }
+    return this.displayedColumns;
   }
 }
