@@ -41,11 +41,10 @@ abstract class BillMapper {
     private fun salesToBillItems(sales: MutableSet<Sale>): MutableSet<BillItem> {
         val billItems = mutableSetOf<BillItem>()
         sales.forEach { sale ->
-            sale.product?.let {
-                billItems.add(BillItem(getIdOfProduct(sale), it.name, sale.quantity, sale.unitPrice))
-            }
-            sale.category?.let {
-                billItems.add(BillItem(getIdOfProduct(sale), it.name, sale.quantity, sale.unitPrice))
+            if (sale.product != null) {
+                billItems.add(BillItem(getIdOfProduct(sale), sale.product!!.name, sale.quantity, sale.unitPrice))
+            } else if (sale.category != null) {
+                billItems.add(BillItem(getIdOfProduct(sale), sale.category!!.name, sale.quantity, sale.unitPrice))
             }
         }
         return billItems

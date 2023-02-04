@@ -1,8 +1,7 @@
 export interface IReportItem {
-  id: number;
-  name: string;
-  qty: number;
-  totalPrice: number;
+  itemName: string;
+  quantity: number;
+  unitPrice: number;
 }
 
 export interface IReport {
@@ -15,5 +14,5 @@ export class Report implements IReport {
 }
 
 export class ReportItem implements IReportItem {
-  constructor(public id: number, public name: string, public qty: number, public totalPrice: number) {}
+  constructor(public itemName: string, public quantity: number, public unitPrice: number) {}
 }

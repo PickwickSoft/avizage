@@ -6,7 +6,7 @@ import { IReport } from '../../entities/report/report.model';
 
 @Injectable({ providedIn: 'root' })
 export class ReportService {
-  private resourceUrl = this.applicationConfigService.getEndpointFor('api/shop/sale');
+  private resourceUrl = this.applicationConfigService.getEndpointFor('api/shop/sales');
 
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 

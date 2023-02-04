@@ -1,5 +1,6 @@
 package org.pickwicksoft.avizage.web.rest
 
+import org.pickwicksoft.avizage.domain.entity.Sale
 import org.pickwicksoft.avizage.domain.model.Cart
 import org.pickwicksoft.avizage.domain.model.CartItem
 import org.pickwicksoft.avizage.service.SaleService
@@ -31,8 +32,7 @@ class SaleResource(
     @GetMapping("/sales/today")
     fun getTodaySales(): SalesReportDto {
         log.debug("REST request to get today sales")
-        val sales = saleService.getTodaySales().map(saleMapper::toDto)
-
+        val sales = saleService.getTodaySales()
         return salesReportDto(sales)
     }
 
@@ -40,13 +40,33 @@ class SaleResource(
     fun getSalesOf(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) day: LocalDate): SalesReportDto {
         log.debug("REST request to get sales for day")
         val requestedDay = LocalDateTime.of(day, LocalTime.MIN).atZone(ZoneId.systemDefault()).toInstant()
-        val sales = saleService.getSalesOf(requestedDay).map(saleMapper::toDto)
+        val sales = saleService.getSalesOf(requestedDay)
+
         return salesReportDto(sales)
     }
-    private fun salesReportDto(sales: List<SaleDto>): SalesReportDto {
-        val total = sales.stream()
-            .map { s -> s.quantity * s.unitPrice }
-            .reduce { s1, s2 -> s1 + s2 }
-        return SalesReportDto(sales, total.get())
+
+    private fun salesReportDto(sales: List<Sale>): SalesReportDto {
+
+        val itemsMap = sales
+            .groupBy { it.category }
+
+        val reportItems: MutableSet<SaleDto> = mutableSetOf()
+        var total = 0.0
+
+        for (item in itemsMap) {
+            var s = item.value[0]
+            val sum = item.value
+                .map { sale -> (sale.quantity * sale.unitPrice) }
+                .reduce { acc, d -> acc + d }
+
+            val qty = item.value
+                .map { saleDto -> saleDto.quantity }
+                .reduce { acc, d -> acc + d }
+
+            reportItems.add(SaleDto(s.date, s.user.login!!, s.storage.name, item.key!!.name, sum, qty))
+            total += sum
+        }
+
+        return SalesReportDto(reportItems.sortedBy { it.itemName }.toList(), total)
     }
 }
