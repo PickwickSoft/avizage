@@ -1,0 +1,10 @@
+{
+  "report": {
+    "billing": {
+      "reports": "Abrechnungsberichte",
+      "report": "Abrechnungsbericht",
+      "todays": "Heutige Abrechnung",
+      "share": "Teilen"
+    }
+  }
+}

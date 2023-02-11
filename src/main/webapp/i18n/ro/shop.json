@@ -15,6 +15,14 @@
       "remove": "Eliminați",
       "checkout": "Finalizare comandă",
       "add": "Adăugați în coș"
+    },
+    "price": {
+      "enter": "Introduceți prețul",
+      "enterFor": "Introduceți prețul pentru"
+    },
+    "checkout": {
+      "bill": "Factura",
+      "salesperson": "Vânzător"
     }
   }
 }

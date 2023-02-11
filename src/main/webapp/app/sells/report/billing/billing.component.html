@@ -1,0 +1,44 @@
+<div>
+  <div class="container">
+    <h2 class="mb-3">
+      <span jhiTranslate="report.billing.todays">Today's Report</span>
+
+      <button color="primary" mat-flat-button class="float-end" (click)="shareReport()">
+        <fa-icon icon="share"></fa-icon>
+        <span jhiTranslate="report.billing.share">Share</span>
+      </button>
+    </h2>
+    <table [dataSource]="report" class="mat-elevation-z8 w-100" mat-table>
+      <ng-container matColumnDef="id">
+        <th *matHeaderCellDef mat-header-cell>#</th>
+        <td *matCellDef="let element" mat-cell>{{ 1 }}</td>
+        <td *matFooterCellDef jhiTranslate="shop.product.total" mat-footer-cell>Total</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th *matHeaderCellDef mat-header-cell jhiTranslate="shop.product.name">Name</th>
+        <td *matCellDef="let element" mat-cell>{{ element.itemName }}</td>
+        <td *matFooterCellDef mat-footer-cell></td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="qty">
+        <th *matHeaderCellDef mat-header-cell jhiTranslate="shop.product.qty">Qty.</th>
+        <td *matCellDef="let element" mat-cell>{{ element.quantity }}</td>
+        <td *matFooterCellDef mat-footer-cell></td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="price">
+        <th *matHeaderCellDef mat-header-cell jhiTranslate="shop.product.price">Price</th>
+        <td *matCellDef="let element" mat-cell>{{ element.unitPrice | currency }}</td>
+        <td *matFooterCellDef mat-footer-cell>{{ total | currency }}</td>
+      </ng-container>
+
+      <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+      <tr *matRowDef="let row; columns: displayedColumns" mat-row></tr>
+      <tr *matFooterRowDef="displayedColumns" mat-footer-row></tr>
+    </table>
+  </div>
+</div>

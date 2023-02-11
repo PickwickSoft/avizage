@@ -22,6 +22,10 @@
           "profit": "Profit"
         }
       },
+      "stock": {
+        "main": "Stoc",
+        "entry": "Intrări"
+      },
       "account": {
         "main": "Cont",
         "settings": "Setări",
@@ -112,6 +116,7 @@
       "addimage": "Adăugare imagine",
       "back": "Înapoi",
       "cancel": "Anulare",
+      "close": "Închidere",
       "delete": "Ștergere",
       "edit": "Editare",
       "open": "Deschidere",

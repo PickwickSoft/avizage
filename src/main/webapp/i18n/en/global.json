@@ -19,6 +19,10 @@
           "profit": "Profit Report"
         }
       },
+      "stock": {
+        "main": "Stock",
+        "entry": "Entry"
+      },
       "account": {
         "main": "Account",
         "settings": "Settings",
@@ -103,6 +107,7 @@
       "addimage": "Add image",
       "back": "Back",
       "cancel": "Cancel",
+      "close": "Close",
       "delete": "Delete",
       "edit": "Edit",
       "open": "Open",

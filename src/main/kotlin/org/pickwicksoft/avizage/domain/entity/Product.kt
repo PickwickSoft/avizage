@@ -20,9 +20,6 @@ class Product(
     @ManyToOne
     val category: Category,
 
-    @OneToMany(mappedBy = "product")
-    var stocks: MutableSet<Stock> = mutableSetOf(),
-
     @Column(name = "bar_code", length = 13)
     var barCode: Long? = null,
 

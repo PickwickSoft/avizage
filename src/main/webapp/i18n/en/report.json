@@ -1,0 +1,10 @@
+{
+  "report": {
+    "billing": {
+      "reports": "Reports",
+      "report": "Report",
+      "todays": "Today's Report",
+      "share": "Share"
+    }
+  }
+}
