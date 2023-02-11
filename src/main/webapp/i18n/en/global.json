@@ -19,6 +19,10 @@
           "profit": "Profit Report"
         }
       },
+      "stock": {
+        "main": "Stock",
+        "entry": "Entry"
+      },
       "account": {
         "main": "Account",
         "settings": "Settings",
