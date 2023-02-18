@@ -58,6 +58,29 @@
           </ul>
         </li>
         <li
+          *ngSwitchCase="true"
+          ngbDropdown
+          class="nav-item dropdown pointer"
+          display="dynamic"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="stock-menu" data-cy="stock">
+            <span>
+              <fa-icon icon="warehouse"></fa-icon>
+              <span jhiTranslate="global.menu.stock.main">Stock</span>
+            </span>
+          </a>
+          <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
+            <li>
+              <a class="dropdown-item" routerLink="stock/entry" routerLinkActive="active" (click)="collapseNavbar()">
+                <fa-icon icon="square-plus" [fixedWidth]="true"></fa-icon>
+                <span jhiTranslate="global.menu.stock.entry">Entry</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li
           *jhiHasAnyAuthority="'ROLE_ADMIN'"
           ngbDropdown
           class="nav-item dropdown pointer"

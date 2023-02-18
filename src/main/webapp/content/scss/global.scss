@@ -67,6 +67,7 @@ Generic styles
   padding: 1.5%;
   margin-top: 20px;
   border: none;
+  height: 100%;
 }
 
 .error {
@@ -237,5 +238,66 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
       margin-left: 0.5em;
     }
   }
+}
+
+.search-wrapper {
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50px;
+  padding: 0 30px 0 10px;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 66px;
+}
+
+.search-wrapper button,
+.search-wrapper input {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.search-wrapper input {
+  height: 100%;
+  width: 120%;
+  border: none !important;
+}
+
+.search-wrapper input:focus {
+  outline: none;
+}
+
+.right-border {
+  padding-right: 5px;
+  margin-right: 5px;
+  border-left: 0;
+  border-right-style: solid;
+  border-right-width: 1px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.search-wrapper fa-icon {
+  color: #5c5c5c;
+  padding: 0 10px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.h-screen {
+  min-height: 85vh;
 }
 /* jhipster-needle-scss-add-main JHipster will add new css style */

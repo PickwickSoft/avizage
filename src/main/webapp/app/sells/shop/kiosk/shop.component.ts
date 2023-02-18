@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { CartItem, ICartItem } from '../../../entities/cart-item/cart-item.model';
-import { IProduct } from '../../../entities/product/product.model';
+import { IProduct, Product } from '../../../entities/product/product.model';
 import { ICategory } from '../../../entities/category/category.model';
 import { MatDialogService } from '../../../shared/dialog/mat-dialog.service';
 import { PriceDialogComponent } from '../price-dialog/price-dialog.component';
@@ -10,6 +10,10 @@ import { CheckoutDialogComponent } from '../checkout-dialog/checkout-dialog.comp
 import { IBill } from '../../../entities/bill/bill.model';
 import { ShopService } from '../shop.service';
 import { HttpResponse } from '@angular/common/http';
+import { StockService } from '../../../stock/stock.service';
+import { IProductEntry } from '../../../entities/product/product-entry.model';
+import { MatInput } from '@angular/material/input';
+
 @Component({
   selector: 'shop',
   templateUrl: './shop.component.html',
@@ -20,9 +24,11 @@ export class ShopComponent implements OnInit {
   displayedColumnsMobile: string[] = ['name', 'id', 'qty', 'price', 'toolbar'];
   cart: MatTableDataSource<ICartItem> = new MatTableDataSource<ICartItem>([]);
   products: IProduct[] = [];
+  productId: string = '';
   categories: ICategory[] = [];
+  @ViewChild('idInput') idInput!: MatInput;
 
-  constructor(private dialogService: MatDialogService, private shopService: ShopService) {}
+  constructor(private dialogService: MatDialogService, private shopService: ShopService, private stockService: StockService) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -110,5 +116,22 @@ export class ShopComponent implements OnInit {
       return this.displayedColumnsMobile;
     }
     return this.displayedColumns;
+  }
+
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'Enter') {
+      this.stockService.getProductByIdAndStorageId(+this.productId, 1).subscribe((res: HttpResponse<IProductEntry>) => {
+        const productEntry = res.body || null;
+        if (productEntry !== null) {
+          this.addProductToCart(new Product(productEntry.productId, productEntry.productName, productEntry.salePrice, ''));
+        }
+      });
+      this.productId = '';
+    }
+  }
+
+  onBlur(event: FocusEvent) {
+    console.error('Out');
+    this.idInput.focus();
   }
 }

@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service
 abstract class StockMapper {
 
     @Mapping(source = "product.name", target = "productName")
-    @Mapping(source = "product.unit.code", target = "productUnitCode")
+    @Mapping(source = "product.unit.id", target = "productUnitId")
     @Mapping(source = "product.category.name", target = "productCategoryName")
+    @Mapping(source = "product.category.id", target = "productCategoryId")
     @Mapping(source = "product.barCode", target = "productBarCode")
     @Mapping(source = "product.id", target = "productId")
     @Mapping(source = "storage.name", target = "storageName")

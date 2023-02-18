@@ -241,8 +241,21 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="container mt-4">
-        <div class="row mx-auto g-3">
+      <div class="container">
+        <div class="search-wrapper">
+          <fa-icon icon="magnifying-glass"></fa-icon>
+          <input
+            (keydown)="handleKeyDown($event)"
+            [(ngModel)]="productId"
+            matInput
+            #idInput="matInput"
+            (focusout)="onBlur($event)"
+            cdkFocusInitial
+            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+            placeholder="Ex. ISBN/Barcode/ID"
+          />
+        </div>
+        <div class="row mx-auto my-auto g-3">
           <div class="col-6 col-md-2" *ngFor="let product of products">
             <mat-card class="product" (click)="addProductToCart(product)">
               <mat-card-content>

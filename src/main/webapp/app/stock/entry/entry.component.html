@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="search-wrapper">
+    <span class="right-border">
+      <button [matMenuTriggerFor]="menu" mat-button>{{ currentStorage?.name || 'Choose a storage' }}</button>
+    </span>
+    <mat-menu #menu="matMenu">
+      <button (click)="currentStorage = storage" *ngFor="let storage of storages" mat-menu-item>{{ storage.name }}</button>
+    </mat-menu>
+    <fa-icon icon="magnifying-glass"></fa-icon>
+    <input
+      (keydown)="handleKeyDown($event)"
+      [(ngModel)]="productId"
+      matInput
+      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+      placeholder="Ex. ISBN/Barcode/ID"
+    />
+  </div>
+  <form [formGroup]="productForm" class="mt-5 container">
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Id</mat-label>
+          <input formControlName="productId" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input formControlName="productName" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Description</mat-label>
+          <textarea formControlName="productDescription" matInput></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="productCategoryId">
+            <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Purchase price</mat-label>
+          <input formControlName="purchasePrice" matInput type="number" class="example-right-align" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Sale price</mat-label>
+          <input formControlName="salePrice" matInput type="number" class="example-right-align" />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Quantity</mat-label>
+          <input formControlName="quantity" matInput />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Unit</mat-label>
+          <mat-select formControlName="productUnitId">
+            <mat-option *ngFor="let unit of units" [value]="unit.id?.toString()">{{ unit.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button color="primary" mat-stroked-button>Cancel</button>
+      </div>
+      <div class="col-auto">
+        <button color="primary" mat-flat-button (click)="createProduct()">Add new Product</button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,9 +1,12 @@
 name;icon_name;description;unit_id;category_id;bar_code;id
 Lumânări mici;;Lumânări mici;2;1000;123456798;1
-Lumânări 2€;;;2;1000;;2
-Lumânări 3€;;;2;1000;;3
-Lumânări 3.50€;;;2;1000;;4
-Lumânări 6€;;;2;1000;;5
+Lumânări;;;2;1000;;2
+Lumânări;;;2;1000;;3
+Lumânări;;;2;1000;;4
+Lumânări;;;2;1000;;5
 Bitter;;Bitter benecific;2;1006;123456654;11
 Vin mănăstiresc;;Vin de împărtășanie;2;1007;808808000012;12
 Vin mănăstiresc;;Vin;2;1007;808808000013;13
+Prescuri;;Prescuri;2;1200;;14
+Povești Românești;;C. V. Gherghiu;2;1001;9789731368269;9789731368269
+Viața Domnului Iisus Hristos;;Amy Le Feuvre;2;1001;9789731368610;9789731368610

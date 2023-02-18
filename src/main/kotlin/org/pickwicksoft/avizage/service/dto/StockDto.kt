@@ -7,8 +7,9 @@ import java.io.Serializable
  */
 data class StockDto(
     val productName: String,
-    val productUnitCode: String,
+    val productUnitId: String,
     val productCategoryName: String,
+    val productCategoryId: Long,
     val productBarCode: Long? = null,
     val productId: Long,
     val storageName: String,
