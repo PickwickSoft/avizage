@@ -118,7 +118,7 @@
     "eslint": "8.23.0",
     "eslint-config-prettier": "8.6.0",
     "eslint-webpack-plugin": "3.2.0",
-    "folder-hash": "4.0.2",
+    "folder-hash": "4.0.4",
     "generator-jhipster": "7.9.3",
     "generator-jhipster-kotlin": "1.16.0",
     "husky": "8.0.3",
