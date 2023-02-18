@@ -91,7 +91,7 @@ export class EntryComponent implements OnInit {
 
   private resetForm(id?: string) {
     this.productForm.setValue({
-      productId: Number.parseInt(id || '').toString(),
+      productId: '',
       productName: '',
       productDescription: '',
       productCategoryId: '',

@@ -5,7 +5,7 @@
         <table [dataSource]="cart" class="mat-elevation-z8 h-full" mat-table>
           <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+            <td mat-cell *matCellDef="let element" class="text-truncate id">{{ element.id }}</td>
             <td *matFooterCellDef jhiTranslate="shop.product.total" mat-footer-cell>Total</td>
           </ng-container>
 
