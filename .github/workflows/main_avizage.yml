@@ -42,6 +42,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: java-app
+          
+      - name: Delete *plain.jar
+        run: rm -f *plain.jar
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -50,4 +53,4 @@ jobs:
           app-name: 'Avizage'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C0077C5832474B2295252387E92A5877 }}
-          package: 'avizage-[a-z0-9.]+-*[A-Z]*(?!-plain).jar'
+          package: '*.jar'
