@@ -50,4 +50,4 @@ jobs:
           app-name: 'Avizage'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C0077C5832474B2295252387E92A5877 }}
-          package: '*.jar'
+          package: 'avizage-[a-z0-9.]+-*[A-Z]*(?!-plain).jar'
