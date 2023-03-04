@@ -70,24 +70,24 @@
                                  referencedTableName="category"/>
     </changeSet>
     <changeSet id="1675089391389-13" author="stefan (generated)">
-        <loadData tableName="address" file="config/liquibase/data/address.csv" separator=";"/>
+        <loadUpdateData tableName="address" file="config/liquibase/data/address.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-14" author="stefan (generated)">
-        <loadData tableName="category" file="config/liquibase/data/category.csv" separator=";"/>
+        <loadUpdateData tableName="category" file="config/liquibase/data/category.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-15" author="stefan (generated)">
-        <loadData tableName="product" file="config/liquibase/data/products.csv" separator=";"/>
+        <loadUpdateData tableName="product" file="config/liquibase/data/products.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-16" author="stefan (generated)">
-        <loadData tableName="storage" file="config/liquibase/data/storage.csv" separator=";"/>
+        <loadUpdateData tableName="storage" file="config/liquibase/data/storage.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-17" author="stefan (generated)">
-        <loadData tableName="stock" file="config/liquibase/data/stocks.csv" separator=";"/>
+        <loadUpdateData tableName="stock" file="config/liquibase/data/stocks.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-18" author="stefan (generated)">
-        <loadData tableName="default_category" file="config/liquibase/data/default_category.csv" separator=";"/>
+        <loadUpdateData tableName="default_category" file="config/liquibase/data/default_category.csv" separator=";" primaryKey="id"/>
     </changeSet>
     <changeSet id="1675089391389-19" author="stefan (generated)">
-        <loadData tableName="default_product" file="config/liquibase/data/default_product.csv" separator=";"/>
+        <loadUpdateData tableName="default_product" file="config/liquibase/data/default_product.csv" separator=";" primaryKey="id"/>
     </changeSet>
 </databaseChangeLog>
