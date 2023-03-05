@@ -20,4 +20,5 @@
     <include file="config/liquibase/changelog/30-01-changelog.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/30-02-changelog.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/01-01-changelog.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/05-01-changelog.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

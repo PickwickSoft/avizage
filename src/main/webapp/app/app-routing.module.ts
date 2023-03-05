@@ -31,7 +31,7 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
         {
           path: 'sells',
           data: {
-            authorities: [Authority.ADMIN],
+            authorities: [Authority.SALESPERSON, Authority.MANAGER],
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./sells/sells-routing.module').then(m => m.SellsRoutingModule),
@@ -39,7 +39,7 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
         {
           path: 'stock',
           data: {
-            authorities: [Authority.ADMIN],
+            authorities: [Authority.MANAGER, Authority.SALESPERSON],
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./stock/stock-routing.module').then(m => m.StockRoutingModule),
