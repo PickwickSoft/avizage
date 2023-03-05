@@ -29,7 +29,7 @@
         </li>
         <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
         <li
-          *ngSwitchCase="true"
+          *jhiHasAnyAuthority="['ROLE_MANAGER', 'ROLE_SALESPERSON']"
           ngbDropdown
           class="nav-item dropdown pointer"
           display="dynamic"
@@ -58,7 +58,7 @@
           </ul>
         </li>
         <li
-          *ngSwitchCase="true"
+          *jhiHasAnyAuthority="['ROLE_MANAGER', 'ROLE_SALESPERSON']"
           ngbDropdown
           class="nav-item dropdown pointer"
           display="dynamic"
