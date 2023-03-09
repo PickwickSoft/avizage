@@ -1,25 +1,11 @@
-import { Component } from '@angular/core';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { User } from '../user-management.model';
-import { UserManagementService } from '../service/user-management.service';
 
 @Component({
-  selector: 'jhi-user-mgmt-delete-dialog',
+  selector: 'user-mgmt-delete-dialog',
   templateUrl: './user-management-delete-dialog.component.html',
 })
 export class UserManagementDeleteDialogComponent {
-  user?: User;
-
-  constructor(private userService: UserManagementService, private activeModal: NgbActiveModal) {}
-
-  cancel(): void {
-    this.activeModal.dismiss();
-  }
-
-  confirmDelete(login: string): void {
-    this.userService.delete(login).subscribe(() => {
-      this.activeModal.close('deleted');
-    });
-  }
+  constructor(@Inject(MAT_DIALOG_DATA) public user: User) {}
 }

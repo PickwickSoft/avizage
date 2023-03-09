@@ -30,8 +30,8 @@ td.mat-cell:last-of-type {
 
 .product {
   cursor: pointer;
-  min-height: 8em;
-  min-width: 8em;
+  height: 150px;
+  width: 200px;
   user-select: none;
 }
 
@@ -49,12 +49,12 @@ td.mat-cell:last-of-type {
 
 .product .name {
   font-weight: 800;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .product .price {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .bg-icon {

@@ -2,30 +2,32 @@
   "userManagement": {
     "home": {
       "title": "Utilizatori",
-      "refreshListLabel": "Refresh list",
-      "createLabel": "Creare utilizator nou",
-      "createOrEditLabel": "Creare sau editare utilizator"
+      "refreshListLabel": "Actualizează lista",
+      "createLabel": "Creează un utilizator nou",
+      "createOrEditLabel": "Creează sau editează un utilizator"
     },
-    "created": "A fost creat un utilizator nou cu identificatorul {{ param }}",
-    "updated": "Utilizatorul cu identificatorul {{ param }} a fost actualizat",
-    "deleted": "Utilizatorul cu identificatorul {{ param }} a fost șters",
+    "created": "Un utilizator nou a fost creat cu identificatorul {{ param }}",
+    "updated": "Un utilizator a fost actualizat cu identificatorul {{ param }}",
+    "deleted": "Un utilizator a fost șters cu identificatorul {{ param }}",
     "delete": {
-      "question": "Sunteți sigur că doriți să stergeți utilizatorul {{ login }}?"
+      "question": "Sunteți sigur că doriți să ștergeți utilizatorul <span class=\"font-bold\">\"{{ login }}\"</span>?"
     },
     "detail": {
       "title": "Utilizator"
     },
-    "login": "Cont",
+    "login": "Autentificare",
     "firstName": "Prenume",
-    "lastName": "Nume",
-    "email": "Email",
+    "lastName": "Nume de familie",
+    "name": "Nume",
+    "email": "E-mail",
     "activated": "Activat",
     "deactivated": "Dezactivat",
-    "profiles": "Profil",
+    "status": "Stare",
+    "profiles": "Profile",
     "langKey": "Limbă",
     "createdBy": "Creat de",
-    "createdDate": "Creat la data",
-    "lastModifiedBy": "Modifica de",
-    "lastModifiedDate": "Modificat la data"
+    "createdDate": "Data creării",
+    "lastModifiedBy": "Modificat de",
+    "lastModifiedDate": "Data modificării"
   }
 }

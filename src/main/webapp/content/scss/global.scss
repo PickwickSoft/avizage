@@ -1,6 +1,9 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import 'material';
 
 /* ==============================================================

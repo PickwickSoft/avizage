@@ -1,142 +1,107 @@
-<div class="d-flex justify-content-center">
-  <div class="col-8">
-    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-      <h2 id="myUserLabel" jhiTranslate="userManagement.home.createOrEditLabel">Create or edit a user</h2>
+<div class="tw-flex tw-min-h-full tw-items-center tw-justify-center tw-py-12 tw-px-4 sm:px-6 lg:px-8">
+  <div class="tw-w-full tw-max-w-lg tw-space-y-8 tw-m-auto">
+    <form (ngSubmit)="save()" [formGroup]="editForm" class="tw-flex tw-flex-col" name="editForm" novalidate role="form">
+      <h2
+        class="tw-text-center tw-text-3xl tw-font-bold tw-tracking-tight tw-text-gray-900 tw-mb-4"
+        id="myUserLabel"
+        jhiTranslate="userManagement.home.createOrEditLabel"
+      >
+        Create or edit a user
+      </h2>
 
       <jhi-alert-error></jhi-alert-error>
 
-      <div class="mb-3" [hidden]="!editForm.value.id">
-        <label jhiTranslate="global.field.id">ID</label>
-        <input type="text" class="form-control" name="id" formControlName="id" readonly />
-      </div>
+      <mat-form-field appearance="outline">
+        <mat-label class="form-label" jhiTranslate="userManagement.email">Email</mat-label>
+        <input formControlName="email" matInput name="email" type="email" />
 
-      <div class="mb-3">
-        <label class="form-label" jhiTranslate="userManagement.login">Login</label>
-        <input type="text" class="form-control" name="login" formControlName="login" />
+        <mat-error *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
+          This field is required.
+        </mat-error>
 
-        <div *ngIf="editForm.get('login')!.invalid && (editForm.get('login')!.dirty || editForm.get('login')!.touched)">
-          <small class="form-text text-danger" *ngIf="editForm.get('login')?.errors?.required" jhiTranslate="entity.validation.required">
-            This field is required.
-          </small>
+        <mat-error
+          *ngIf="editForm.get('email')?.errors?.maxlength"
+          [translateValues]="{ max: 100 }"
+          jhiTranslate="entity.validation.maxlength"
+        >
+          This field cannot be longer than 100 characters.
+        </mat-error>
 
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get('login')?.errors?.maxlength"
-            jhiTranslate="entity.validation.maxlength"
-            [translateValues]="{ max: 50 }"
-          >
-            This field cannot be longer than 50 characters.
-          </small>
+        <mat-error
+          *ngIf="editForm.get('email')?.errors?.minlength"
+          [translateValues]="{ min: 5 }"
+          jhiTranslate="entity.validation.minlength"
+        >
+          This field is required to be at least 5 characters.
+        </mat-error>
 
-          <small class="form-text text-danger" *ngIf="editForm.get('login')?.errors?.pattern" jhiTranslate="entity.validation.patternLogin">
-            This field can only contain letters, digits and e-mail addresses.
-          </small>
-        </div>
-      </div>
+        <mat-error *ngIf="editForm.get('email')?.errors?.email" jhiTranslate="global.messages.validate.email.invalid">
+          Your email is invalid.
+        </mat-error>
+      </mat-form-field>
 
-      <div class="mb-3">
-        <label class="form-label" jhiTranslate="userManagement.firstName">First name</label>
-        <input type="text" class="form-control" name="firstName" formControlName="firstName" />
+      <div class="tw-flex tw-flex-col sm:tw-flex-row tw-items-center tw-justify-between tw-gap-0 sm:gap-3 tw-gap-x-4 tw-w-full">
+        <mat-form-field appearance="outline" class="tw-w-full">
+          <mat-label class="form-label" jhiTranslate="userManagement.firstName">First name</mat-label>
+          <input formControlName="firstName" matInput name="firstName" type="text" />
 
-        <div *ngIf="editForm.get('firstName')!.invalid && (editForm.get('firstName')!.dirty || editForm.get('firstName')!.touched)">
-          <small
-            class="form-text text-danger"
+          <mat-error
             *ngIf="editForm.get('firstName')?.errors?.maxlength"
-            jhiTranslate="entity.validation.maxlength"
             [translateValues]="{ max: 50 }"
+            jhiTranslate="entity.validation.maxlength"
           >
             This field cannot be longer than 50 characters.
-          </small>
-        </div>
-      </div>
+          </mat-error>
+        </mat-form-field>
 
-      <div class="mb-3">
-        <label jhiTranslate="userManagement.lastName">Last name</label>
-        <input type="text" class="form-control" name="lastName" formControlName="lastName" />
+        <mat-form-field appearance="outline" class="tw-w-full">
+          <mat-label jhiTranslate="userManagement.lastName">Last name</mat-label>
+          <input formControlName="lastName" matInput name="lastName" type="text" />
 
-        <div *ngIf="editForm.get('lastName')!.invalid && (editForm.get('lastName')!.dirty || editForm.get('lastName')!.touched)">
-          <small
-            class="form-text text-danger"
+          <mat-error
             *ngIf="editForm.get('lastName')?.errors?.maxlength"
-            jhiTranslate="entity.validation.maxlength"
             [translateValues]="{ max: 50 }"
+            jhiTranslate="entity.validation.maxlength"
           >
             This field cannot be longer than 50 characters.
-          </small>
-        </div>
+          </mat-error>
+        </mat-form-field>
       </div>
 
-      <div class="mb-3">
-        <label class="form-label" jhiTranslate="userManagement.email">Email</label>
-        <input type="email" class="form-control" name="email" formControlName="email" />
-
-        <div *ngIf="editForm.get('email')!.invalid && (editForm.get('email')!.dirty || editForm.get('email')!.touched)">
-          <small class="form-text text-danger" *ngIf="editForm.get('email')?.errors?.required" jhiTranslate="entity.validation.required">
-            This field is required.
-          </small>
-
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get('email')?.errors?.maxlength"
-            jhiTranslate="entity.validation.maxlength"
-            [translateValues]="{ max: 100 }"
-          >
-            This field cannot be longer than 100 characters.
-          </small>
-
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get('email')?.errors?.minlength"
-            jhiTranslate="entity.validation.minlength"
-            [translateValues]="{ min: 5 }"
-          >
-            This field is required to be at least 5 characters.
-          </small>
-
-          <small
-            class="form-text text-danger"
-            *ngIf="editForm.get('email')?.errors?.email"
-            jhiTranslate="global.messages.validate.email.invalid"
-          >
-            Your email is invalid.
-          </small>
-        </div>
-      </div>
-
-      <div class="form-check">
-        <label class="form-check-label" for="activated">
-          <input
-            class="form-check-input"
-            [attr.disabled]="editForm.value.id === undefined ? 'disabled' : null"
-            type="checkbox"
-            id="activated"
-            name="activated"
-            formControlName="activated"
-          />
+      <div class="tw-flex tw-items-center tw-pb-3">
+        <mat-checkbox
+          [attr.disabled]="this.id === undefined ? 'disabled' : null"
+          color="primary"
+          formControlName="activated"
+          id="activated"
+          name="activated"
+        >
           <span jhiTranslate="userManagement.activated">Activated</span>
-        </label>
+        </mat-checkbox>
       </div>
 
-      <div class="mb-3" *ngIf="languages && languages.length > 0">
-        <label jhiTranslate="userManagement.langKey">Language</label>
-        <select class="form-control" id="langKey" name="langKey" formControlName="langKey">
-          <option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</option>
-        </select>
-      </div>
+      <mat-form-field *ngIf="languages && languages.length > 0" appearance="outline">
+        <mat-label jhiTranslate="userManagement.langKey">Language</mat-label>
+        <mat-select formControlName="langKey" id="langKey" name="langKey">
+          <mat-option *ngFor="let language of languages" [value]="language">{{ language | findLanguageFromKey }}</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-      <div class="mb-3">
-        <label jhiTranslate="userManagement.profiles">Profiles</label>
-        <select class="form-control" multiple name="authority" formControlName="authorities">
-          <option *ngFor="let authority of authorities" [value]="authority">{{ authority }}</option>
-        </select>
-      </div>
-      <button type="button" class="btn btn-secondary" (click)="previousState()">
-        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-      </button>
+      <mat-form-field appearance="outline">
+        <mat-label jhiTranslate="userManagement.profiles">Profiles</mat-label>
+        <mat-select formControlName="authorities" multiple name="authority">
+          <mat-option *ngFor="let authority of authorities" [value]="authority">{{ authority }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="tw-flex tw-flex-row tw-items-center tw-justify-end tw-gap-3 tw-w-full">
+        <button (click)="previousState()" mat-stroked-button type="button">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
 
-      <button type="submit" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-        <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-      </button>
+        <button [disabled]="editForm.invalid || isSaving" color="primary" mat-flat-button type="submit">
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
     </form>
   </div>
 </div>

@@ -10,7 +10,7 @@
     "updated": "A user is updated with identifier {{ param }}",
     "deleted": "A user is deleted with identifier {{ param }}",
     "delete": {
-      "question": "Are you sure you want to delete user {{ login }}?"
+      "question": "Are you sure you want to delete user <span class=\"font-bold\">\"{{ login }}\"</span>?"
     },
     "detail": {
       "title": "User"
@@ -18,9 +18,11 @@
     "login": "Login",
     "firstName": "First name",
     "lastName": "Last name",
+    "name": "Name",
     "email": "Email",
     "activated": "Activated",
     "deactivated": "Deactivated",
+    "status": "Status",
     "profiles": "Profiles",
     "langKey": "Language",
     "createdBy": "Created by",

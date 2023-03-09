@@ -1,56 +1,77 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center tw-mt-10">
   <div class="col-8">
     <div *ngIf="user">
-      <h2>
-        <span jhiTranslate="userManagement.detail.title">User</span> [<strong>{{ user.login }}</strong
-        >]
-      </h2>
-
-      <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="userManagement.login">Login</span></dt>
-        <dd>
-          <span>{{ user.login }}</span>
-          <span *ngIf="user.activated" class="badge bg-success" jhiTranslate="userManagement.activated">Activated</span>
-          <span *ngIf="!user.activated" class="badge bg-danger" jhiTranslate="userManagement.deactivated">Deactivated</span>
-        </dd>
-
-        <dt><span jhiTranslate="userManagement.firstName">First name</span></dt>
-        <dd>{{ user.firstName }}</dd>
-
-        <dt><span jhiTranslate="userManagement.lastName">Last name</span></dt>
-        <dd>{{ user.lastName }}</dd>
-
-        <dt><span jhiTranslate="userManagement.email">Email</span></dt>
-        <dd>{{ user.email }}</dd>
-
-        <dt><span jhiTranslate="userManagement.langKey">Language</span></dt>
-        <dd>{{ user.langKey }}</dd>
-
-        <dt><span jhiTranslate="userManagement.createdBy">Created by</span></dt>
-        <dd>{{ user.createdBy }}</dd>
-
-        <dt><span jhiTranslate="userManagement.createdDate">Created date</span></dt>
-        <dd>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</dd>
-
-        <dt><span jhiTranslate="userManagement.lastModifiedBy">Modified by</span></dt>
-        <dd>{{ user.lastModifiedBy }}</dd>
-
-        <dt><span jhiTranslate="userManagement.lastModifiedDate">Modified date</span></dt>
-        <dd>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</dd>
-
-        <dt><span jhiTranslate="userManagement.profiles">Profiles</span></dt>
-        <dd>
-          <ul class="list-unstyled">
-            <li *ngFor="let authority of user.authorities">
-              <span class="badge bg-info">{{ authority }}</span>
-            </li>
-          </ul>
-        </dd>
-      </dl>
-
-      <button type="submit" routerLink="../../" class="btn btn-info">
+      <button type="submit" routerLink="../../" class="tw-text-gray-500 hover:tw-text-gray-700 tw-font-semibold">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
       </button>
+      <div class="tw-flex tw-items-center tw-justify-between">
+        <h2 class="tw-text-3xl tw-font-bold tw-tracking-tight tw-text-gray-900 !mt-2">{{ user.lastName }}, {{ user.firstName }}</h2>
+        <div>
+          <button mat-flat-button color="primary" [matMenuTriggerFor]="menu" aria-label="Open context actions">
+            Actions
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item type="submit" [routerLink]="['../../', user.login, 'edit']" queryParamsHandling="merge">
+              <mat-icon>edit</mat-icon>
+              <span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+            <button
+              mat-menu-item
+              type="button"
+              (click)="deleteUser(user)"
+              [disabled]="!currentAccount || currentAccount.login === user.login"
+            >
+              <mat-icon>person_remove</mat-icon>
+              <span jhiTranslate="entity.action.delete">Delete</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+
+      <div class="tw-grid tw-grid-cols-3 tw-gap-y-5 tw-rounded-md tw-border tw-border-gray-100 tw-mt-10 tw-p-6 tw-font-normal">
+        <div>
+          <p jhiTranslate="userManagement.status" class="tw-text-gray-500">Status</p>
+          <p>
+            <span *ngIf="user.activated" class="badge bg-success" jhiTranslate="userManagement.activated">Activated</span>
+            <span *ngIf="!user.activated" class="badge bg-danger" jhiTranslate="userManagement.deactivated">Deactivated</span>
+          </p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.name" class="tw-text-gray-500 tw-mb-1">Name</p>
+          <p>{{ user.lastName }}, {{ user.firstName }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.email" class="tw-text-gray-500 tw-mb-1">Email</p>
+          <p>{{ user.email }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.langKey" class="tw-text-gray-500 tw-mb-1">Language</p>
+          <p>{{ user.langKey }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.createdBy" class="tw-text-gray-500 tw-mb-1">Created by</p>
+          <p>{{ user.createdBy }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.createdDate" class="tw-text-gray-500 tw-mb-1">Created Date</p>
+          <p>{{ user.createdDate | date: 'dd/MM/yy HH:mm' }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.lastModifiedBy" class="tw-text-gray-500 tw-mb-1">Modified by</p>
+          <p>{{ user.lastModifiedBy }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.lastModifiedDate" class="tw-text-gray-500 tw-mb-1">Modified Date</p>
+          <p>{{ user.lastModifiedDate | date: 'dd/MM/yy HH:mm' }}</p>
+        </div>
+        <div>
+          <p jhiTranslate="userManagement.profiles" class="tw-text-gray-500 tw-mb-1">Profiles</p>
+          <mat-chip-list aria-label="Authorities">
+            <mat-chip *ngFor="let authority of user.authorities">{{ authority }}</mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
     </div>
   </div>
 </div>

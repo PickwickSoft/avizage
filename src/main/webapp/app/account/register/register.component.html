@@ -1,234 +1,133 @@
-<div>
-  <div class="d-flex justify-content-center">
-    <div class="col-md-8">
-      <h1 jhiTranslate="register.title" data-cy="registerTitle">Registration</h1>
-
-      <div class="alert alert-success" *ngIf="success" jhiTranslate="register.messages.success">
-        <strong>Registration saved!</strong> Please check your email for confirmation.
-      </div>
-
-      <div class="alert alert-danger" *ngIf="error" jhiTranslate="register.messages.error.fail">
-        <strong>Registration failed!</strong> Please try again later.
-      </div>
-
-      <div class="alert alert-danger" *ngIf="errorUserExists" jhiTranslate="register.messages.error.userexists">
-        <strong>Login name already registered!</strong> Please choose another one.
-      </div>
-
-      <div class="alert alert-danger" *ngIf="errorEmailExists" jhiTranslate="register.messages.error.emailexists">
-        <strong>Email is already in use!</strong> Please choose another one.
-      </div>
-
-      <div class="alert alert-danger" *ngIf="doNotMatch" jhiTranslate="global.messages.error.dontmatch">
-        The password and its confirmation do not match!
-      </div>
+<div class="tw-flex tw-min-h-full tw-items-center tw-justify-center tw-py-12 tw-px-4 sm:tw-px-6 lg:tw-px-8">
+  <div class="tw-w-full tw-max-w-md tw-space-y-8 tw-m-auto">
+    <div>
+      <img class="tw-mx-auto tw-h-12 tw-w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company" />
+      <h2
+        data-cy="loginTitle"
+        class="tw-mt-6 tw-text-center tw-text-3xl tw-font-bold tw-tracking-tight tw-text-gray-900"
+        jhiTranslate="register.title"
+      >
+        Registration
+      </h2>
+      <p class="tw-mt-2 tw-text-center tw-text-sm tw-text-gray-600">
+        Or
+        <a class="tw-font-medium text-primary" routerLink="/login" jhiTranslate="global.messages.info.authenticated.link">Sign in</a>
+      </p>
     </div>
-  </div>
 
-  <div class="d-flex justify-content-center">
-    <div class="col-md-8">
-      <form name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
-        <div class="mb-3">
-          <label class="form-label" for="login" jhiTranslate="global.form.username.label">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            id="login"
-            name="login"
-            placeholder="{{ 'global.form.username.placeholder' | translate }}"
-            formControlName="login"
-            data-cy="username"
-            #login
-          />
+    <p
+      class="tw-mb-6 tw-text-center tw-text-sm tw-font-medium tw-text-red-600"
+      *ngIf="doNotMatch"
+      jhiTranslate="global.messages.error.dontmatch"
+    >
+      The password and its confirmation do not match!
+    </p>
 
-          <div *ngIf="registerForm.get('login')!.invalid && (registerForm.get('login')!.dirty || registerForm.get('login')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('login')?.errors?.required"
-              jhiTranslate="register.messages.validate.login.required"
-            >
-              Your username is required.
-            </small>
+    <p
+      class="tw-mb-6 tw-text-center tw-text-sm tw-font-medium tw-text-red-600"
+      *ngIf="errorEmailExists"
+      jhiTranslate="register.messages.error.emailexists"
+    >
+      <strong>Email is already in use!</strong> Please choose another one.
+    </p>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('login')?.errors?.minlength"
-              jhiTranslate="register.messages.validate.login.minlength"
-            >
-              Your username is required to be at least 1 character.
-            </small>
+    <p
+      class="tw-mb-6 tw-text-center tw-text-sm tw-font-medium tw-text-red-600"
+      *ngIf="errorUserExists"
+      jhiTranslate="register.messages.error.userexists"
+    >
+      <strong>Login name already registered!</strong> Please choose another one.
+    </p>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('login')?.errors?.maxlength"
-              jhiTranslate="register.messages.validate.login.maxlength"
-            >
-              Your username cannot be longer than 50 characters.
-            </small>
+    <p class="tw-mb-6 tw-text-center tw-text-sm tw-font-medium tw-text-red-600" *ngIf="error" jhiTranslate="register.messages.error.fail">
+      <strong>Registration failed!</strong> Please try again later.
+    </p>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('login')?.errors?.pattern"
-              jhiTranslate="register.messages.validate.login.pattern"
-            >
-              Your username is invalid.
-            </small>
-          </div>
-        </div>
+    <p class="tw-mb-6 tw-text-center tw-text-sm tw-font-medium tw-text-green-600" *ngIf="success" jhiTranslate="register.messages.success">
+      <strong>Registration saved!</strong> Please check your email for confirmation.
+    </p>
 
-        <div class="mb-3">
-          <label class="form-label" for="email" jhiTranslate="global.form.email.label">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="{{ 'global.form.email.placeholder' | translate }}"
-            formControlName="email"
-            data-cy="email"
-          />
+    <form class="form tw-flex tw-flex-col" name="form" role="form" (ngSubmit)="register()" [formGroup]="registerForm" *ngIf="!success">
+      <mat-form-field appearance="outline">
+        <mat-label jhiTranslate="global.form.email.label">Email</mat-label>
+        <input matInput type="text" id="email" name="email" formControlName="email" data-cy="email" />
+        <mat-error *ngIf="registerForm.get('email')?.errors?.required" jhiTranslate="global.messages.validate.email.required">
+          Your email is required.
+        </mat-error>
 
-          <div *ngIf="registerForm.get('email')!.invalid && (registerForm.get('email')!.dirty || registerForm.get('email')!.touched)">
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('email')?.errors?.required"
-              jhiTranslate="global.messages.validate.email.required"
-            >
-              Your email is required.
-            </small>
+        <mat-error *ngIf="registerForm.get('email')?.errors?.minlength" jhiTranslate="global.messages.validate.email.minlength">
+          Your email is required to be at least 5 characters.
+        </mat-error>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('email')?.errors?.invalid"
-              jhiTranslate="global.messages.validate.email.invalid"
-            >
-              Your email is invalid.
-            </small>
+        <mat-error *ngIf="registerForm.get('email')?.errors?.maxlength" jhiTranslate="global.messages.validate.email.maxlength">
+          Your email cannot be longer than 50 characters.
+        </mat-error>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('email')?.errors?.minlength"
-              jhiTranslate="global.messages.validate.email.minlength"
-            >
-              Your email is required to be at least 5 characters.
-            </small>
+        <mat-error *ngIf="registerForm.get('email')?.errors?.email" jhiTranslate="global.messages.validate.email.invalid">
+          Your email is invalid.
+        </mat-error>
+      </mat-form-field>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('email')?.errors?.maxlength"
-              jhiTranslate="global.messages.validate.email.maxlength"
-            >
-              Your email cannot be longer than 50 characters.
-            </small>
-          </div>
-        </div>
+      <mat-form-field appearance="outline">
+        <mat-label jhiTranslate="global.form.newpassword.label">Password</mat-label>
+        <input matInput type="password" id="password" name="password" formControlName="password" data-cy="firstPassword" />
+        <mat-error *ngIf="registerForm.get('password')?.errors?.required" jhiTranslate="global.messages.validate.newpassword.required">
+          Your password is required.
+        </mat-error>
 
-        <div class="mb-3">
-          <label class="form-label" for="password" jhiTranslate="global.form.newpassword.label">New password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="password"
-            name="password"
-            placeholder="{{ 'global.form.newpassword.placeholder' | translate }}"
-            formControlName="password"
-            data-cy="firstPassword"
-          />
+        <mat-error *ngIf="registerForm.get('password')?.errors?.minlength" jhiTranslate="global.messages.validate.newpassword.minlength">
+          Your password is required to be at least 4 characters.
+        </mat-error>
 
-          <div
-            *ngIf="registerForm.get('password')!.invalid && (registerForm.get('password')!.dirty || registerForm.get('password')!.touched)"
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('password')?.errors?.required"
-              jhiTranslate="global.messages.validate.newpassword.required"
-            >
-              Your password is required.
-            </small>
+        <mat-error *ngIf="registerForm.get('password')?.errors?.maxlength" jhiTranslate="global.messages.validate.newpassword.maxlength">
+          Your password cannot be longer than 50 characters.
+        </mat-error>
+      </mat-form-field>
+      <mat-password-strength class="tw-pb-4" [password]="registerForm.get('password')!.value"></mat-password-strength>
 
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('password')?.errors?.minlength"
-              jhiTranslate="global.messages.validate.newpassword.minlength"
-            >
-              Your password is required to be at least 4 characters.
-            </small>
-
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('password')?.errors?.maxlength"
-              jhiTranslate="global.messages.validate.newpassword.maxlength"
-            >
-              Your password cannot be longer than 50 characters.
-            </small>
-          </div>
-
-          <jhi-password-strength-bar [passwordToCheck]="registerForm.get('password')!.value"></jhi-password-strength-bar>
-        </div>
-
-        <div class="mb-3">
-          <label class="form-label" for="confirmPassword" jhiTranslate="global.form.confirmpassword.label">New password confirmation</label>
-          <input
-            type="password"
-            class="form-control"
-            id="confirmPassword"
-            name="confirmPassword"
-            placeholder="{{ 'global.form.confirmpassword.placeholder' | translate }}"
-            formControlName="confirmPassword"
-            data-cy="secondPassword"
-          />
-
-          <div
-            *ngIf="
-              registerForm.get('confirmPassword')!.invalid &&
-              (registerForm.get('confirmPassword')!.dirty || registerForm.get('confirmPassword')!.touched)
-            "
-          >
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('confirmPassword')?.errors?.required"
-              jhiTranslate="global.messages.validate.confirmpassword.required"
-            >
-              Your confirmation password is required.
-            </small>
-
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('confirmPassword')?.errors?.minlength"
-              jhiTranslate="global.messages.validate.confirmpassword.minlength"
-            >
-              Your confirmation password is required to be at least 4 characters.
-            </small>
-
-            <small
-              class="form-text text-danger"
-              *ngIf="registerForm.get('confirmPassword')?.errors?.maxlength"
-              jhiTranslate="global.messages.validate.confirmpassword.maxlength"
-            >
-              Your confirmation password cannot be longer than 50 characters.
-            </small>
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          [disabled]="registerForm.invalid"
-          class="btn btn-primary"
-          jhiTranslate="register.form.button"
-          data-cy="submit"
+      <mat-form-field appearance="outline">
+        <mat-label jhiTranslate="global.form.confirmpassword.label">Password confirmation</mat-label>
+        <input
+          matInput
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          formControlName="confirmPassword"
+          data-cy="secondPassword"
+        />
+        <mat-error
+          *ngIf="registerForm.get('confirmPassword')?.errors?.required"
+          jhiTranslate="global.messages.validate.newpassword.required"
         >
-          Register
-        </button>
-      </form>
+          Your password is required.
+        </mat-error>
 
-      <div class="mt-3 alert alert-warning">
-        <span jhiTranslate="global.messages.info.authenticated.prefix">If you want to </span>
-        <a class="alert-link" routerLink="/login" jhiTranslate="global.messages.info.authenticated.link">sign in</a
-        ><span jhiTranslate="global.messages.info.authenticated.suffix"
-          >, you can try the default accounts:<br />- Administrator (login="admin" and password="admin") <br />- User (login="user" and
-          password="user").</span
+        <mat-error
+          *ngIf="registerForm.get('confirmPassword')?.errors?.minlength"
+          jhiTranslate="global.messages.validate.newpassword.minlength"
         >
-      </div>
-    </div>
+          Your username is required to be at least 4 characters.
+        </mat-error>
+
+        <mat-error
+          *ngIf="registerForm.get('confirmPassword')?.errors?.maxlength"
+          jhiTranslate="global.messages.validate.newpassword.maxlength"
+        >
+          Your username cannot be longer than 50 characters.
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-flat-button
+        color="primary"
+        type="submit"
+        [disabled]="registerForm.invalid"
+        class="btn btn-primary"
+        jhiTranslate="register.form.button"
+        data-cy="submit"
+      >
+        Register
+      </button>
+    </form>
   </div>
 </div>

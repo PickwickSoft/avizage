@@ -6,12 +6,15 @@ import { ApplicationConfigService } from 'app/core/config/application-config.ser
 import { createRequestOption } from 'app/core/request/request-util';
 import { Pagination } from 'app/core/request/request.model';
 import { IUser } from '../user-management.model';
+import { IService } from '../../../shared/service/iservice';
 
 @Injectable({ providedIn: 'root' })
-export class UserManagementService {
+export class UserManagementService extends IService<IUser> {
   private resourceUrl = this.applicationConfigService.getEndpointFor('api/admin/users');
 
-  constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+  constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {
+    super();
+  }
 
   create(user: IUser): Observable<IUser> {
     return this.http.post<IUser>(this.resourceUrl, user);
