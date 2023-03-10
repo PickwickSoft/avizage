@@ -111,7 +111,7 @@
     <div class="col-md-8">
       <div class="tw-grid tw-grid-cols-5 tw-gap-4">
         <div *ngFor="let product of products">
-          <mat-card (click)="addProductToCart(product)" class="product">
+          <mat-card (click)="addProductToCart(product)" (keydown.enter)="addProductToCart(product)" class="product" tabindex="0">
             <mat-card-content>
               <p class="name">{{ product.name }}</p>
               <p class="price">{{ product.price | currency }}</p>
@@ -120,7 +120,7 @@
           </mat-card>
         </div>
         <div *ngFor="let category of categories">
-          <mat-card (click)="addCategoryToCart(category)" class="product">
+          <mat-card (click)="addCategoryToCart(category)" (keydown.enter)="addCategoryToCart(category)" class="product" tabindex="0">
             <mat-card-content>
               <p class="name">{{ category.name }}</p>
               <fa-icon *ngIf="category.iconName" class="bg-icon"></fa-icon>
