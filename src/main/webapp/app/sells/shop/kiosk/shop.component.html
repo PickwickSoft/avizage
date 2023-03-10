@@ -1,39 +1,53 @@
 <div class="shop container-fluid">
-  <div class="row h-full">
-    <div class="col-md-4 h-full">
-      <div class="bill h-full">
-        <table [dataSource]="cart" class="mat-elevation-z8 h-full" mat-table>
+  <div class="row tw-h-full">
+    <div class="col-md-4 tw-h-full">
+      <div class="search-wrapper tw-mb-3">
+        <fa-icon icon="magnifying-glass"></fa-icon>
+        <input
+          #idInput="matInput"
+          (focusout)="onBlur($event)"
+          (keydown)="handleKeyDown($event)"
+          [(ngModel)]="productId"
+          cdkFocusInitial
+          matInput
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+          placeholder="Ex. ISBN/Barcode/ID"
+        />
+      </div>
+      <div class="tw-tw-h-full">
+        <table [dataSource]="cart" class="mat-elevation-z8 tw-h-full" mat-table>
           <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef>#</th>
-            <td mat-cell *matCellDef="let element" class="text-truncate id">{{ element.id }}</td>
+            <th *matHeaderCellDef mat-header-cell>#</th>
+            <td *matCellDef="let element" class="text-truncate id" mat-cell>{{ element.id }}</td>
             <td *matFooterCellDef jhiTranslate="shop.product.total" mat-footer-cell>Total</td>
           </ng-container>
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
             <th *matHeaderCellDef jhiTranslate="shop.product.name" mat-header-cell>Name</th>
-            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-            <td mat-footer-cell *matFooterCellDef></td>
+            <td *matCellDef="let element" mat-cell>{{ element.name }}</td>
+            <td *matFooterCellDef mat-footer-cell></td>
           </ng-container>
 
           <!-- Weight Column -->
           <ng-container matColumnDef="qty">
             <th *matHeaderCellDef jhiTranslate="shop.product.qty" mat-header-cell>Qty.</th>
-            <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
-            <td mat-footer-cell *matFooterCellDef></td>
+            <td *matCellDef="let element" mat-cell>{{ element.qty }}</td>
+            <td *matFooterCellDef mat-footer-cell></td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="price">
             <th *matHeaderCellDef jhiTranslate="shop.product.price" mat-header-cell>Price</th>
-            <td mat-cell *matCellDef="let element">{{ element.price * element.qty | currency }}</td>
-            <td mat-footer-cell *matFooterCellDef>{{ getTotalCost() | currency }}</td>
+            <td *matCellDef="let element" mat-cell>{{ element.price * element.qty | currency }}</td>
+            <td *matFooterCellDef mat-footer-cell>{{ getTotalCost() | currency }}</td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="toolbar">
             <th *matHeaderCellDef mat-header-cell>
               <button
+                class="tw-h-12 tw-m-2 tw-w-36 tw-font-bold"
                 (click)="emptyCart()"
                 [disabled]="cart.data.length === 0"
                 aria-label="Empty cart"
@@ -45,28 +59,41 @@
               </button>
             </th>
             <td *matCellDef="let element" mat-cell>
-              <button (click)="removeOneCartItem(element)" mat-icon-button>
+              <button
+                (click)="removeOneCartItem(element)"
+                class="tw-bg-white tw-mr-1 tw-shadow-none tw-ring-2 tw-ring-slate-200 active:tw-bg-slate-200"
+                mat-fab
+              >
                 <mat-icon>remove</mat-icon>
               </button>
-              <button (click)="deleteCartItems(element)" aria-label="Delete element" mat-icon-button>
+              <button
+                (click)="deleteCartItems(element)"
+                aria-label="Delete element"
+                class="tw-bg-white tw-mr-1 tw-shadow-none tw-ring-2 tw-ring-slate-200 active:tw-bg-slate-200"
+                mat-fab
+              >
                 <mat-icon>delete</mat-icon>
               </button>
-              <button (click)="increaseOneCartItem(element)" mat-icon-button>
+              <button
+                (click)="increaseOneCartItem(element)"
+                class="tw-bg-white tw-mr-1 tw-shadow-none tw-ring-2 tw-ring-slate-200 active:tw-bg-slate-200"
+                mat-fab
+              >
                 <mat-icon>add</mat-icon>
               </button>
             </td>
             <td *matFooterCellDef mat-footer-cell></td>
           </ng-container>
 
-          <tr mat-header-row *matHeaderRowDef="getDataSource()"></tr>
-          <tr mat-row *matRowDef="let row; columns: getDataSource()"></tr>
+          <tr *matHeaderRowDef="getDataSource()" mat-header-row></tr>
+          <tr *matRowDef="let row; columns: getDataSource()" mat-row></tr>
           <tr *matNoDataRow class="mat-row">
             <td class="mat-cell pt-2" colspan="5">
               <img src="content/images/empty-cart.svg" />
               <p class="text-center empty" jhiTranslate="shop.cart.isEmpty">Your shopping cart is empty!</p>
             </td>
           </tr>
-          <tr mat-footer-row *matFooterRowDef="getDataSource()"></tr>
+          <tr *matFooterRowDef="getDataSource()" mat-footer-row></tr>
         </table>
         <button
           (click)="checkOut()"
@@ -82,38 +109,23 @@
       </div>
     </div>
     <div class="col-md-8">
-      <div class="container">
-        <div class="search-wrapper">
-          <fa-icon icon="magnifying-glass"></fa-icon>
-          <input
-            (keydown)="handleKeyDown($event)"
-            [(ngModel)]="productId"
-            matInput
-            #idInput="matInput"
-            (focusout)="onBlur($event)"
-            cdkFocusInitial
-            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-            placeholder="Ex. ISBN/Barcode/ID"
-          />
+      <div class="tw-grid tw-grid-cols-5 tw-gap-4">
+        <div *ngFor="let product of products">
+          <mat-card (click)="addProductToCart(product)" class="product">
+            <mat-card-content>
+              <p class="name">{{ product.name }}</p>
+              <p class="price">{{ product.price | currency }}</p>
+              <fa-icon *ngIf="product.iconName" [icon]="iconToProp(product.iconName)" class="bg-icon"></fa-icon>
+            </mat-card-content>
+          </mat-card>
         </div>
-        <div class="row mx-auto my-auto g-3">
-          <div class="col-6 col-md-2" *ngFor="let product of products">
-            <mat-card class="product" (click)="addProductToCart(product)">
-              <mat-card-content>
-                <p class="name">{{ product.name }}</p>
-                <p class="price">{{ product.price | currency }}</p>
-                <fa-icon *ngIf="product.iconName" [icon]="iconToProp(product.iconName)" class="bg-icon"></fa-icon>
-              </mat-card-content>
-            </mat-card>
-          </div>
-          <div class="col-6 col-md-2" *ngFor="let category of categories">
-            <mat-card class="product" (click)="addCategoryToCart(category)">
-              <mat-card-content>
-                <p class="name">{{ category.name }}</p>
-                <fa-icon *ngIf="category.iconName" class="bg-icon"></fa-icon>
-              </mat-card-content>
-            </mat-card>
-          </div>
+        <div *ngFor="let category of categories">
+          <mat-card (click)="addCategoryToCart(category)" class="product">
+            <mat-card-content>
+              <p class="name">{{ category.name }}</p>
+              <fa-icon *ngIf="category.iconName" class="bg-icon"></fa-icon>
+            </mat-card-content>
+          </mat-card>
         </div>
       </div>
     </div>
