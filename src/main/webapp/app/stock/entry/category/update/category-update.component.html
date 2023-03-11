@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Create a new Category</h2>
+<mat-dialog-content class="mat-typography">
+  <jhi-alert-error></jhi-alert-error>
+  <form [formGroup]="categoryForm" class="flex flex-col">
+    <mat-form-field appearance="outline">
+      <mat-label>Category Name</mat-label>
+      <input formControlName="categoryName" matInput placeholder="Ex. Books" />
+      <mat-error *ngIf="categoryForm.get('categoryName')?.errors?.required" jhiTranslate="entity.validation.required">
+        This field is required.
+      </mat-error>
+      <mat-error *ngIf="categoryForm.get('categoryName')?.errors?.['isDuplicateValidator']"> This category already exists </mat-error>
+    </mat-form-field>
+    <mat-dialog-actions align="end">
+      <button mat-dialog-close mat-stroked-button><span jhiTranslate="entity.action.cancel">Cancel</span></button>
+      <button
+        (click)="submit()"
+        [disabled]="categoryForm.invalid"
+        [mat-dialog-close]="'created'"
+        cdkFocusInitial
+        color="primary"
+        mat-flat-button
+      >
+        <span jhiTranslate="entity.action.save">Save</span>
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

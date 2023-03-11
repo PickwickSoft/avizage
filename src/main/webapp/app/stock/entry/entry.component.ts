@@ -8,6 +8,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ICategory } from '../../entities/category/category.model';
 import { UnitService } from '../../entities/unit/unit.service';
 import { IUnit } from '../../entities/unit/unit.model';
+import { MatDialogService } from '../../shared/dialog/mat-dialog.service';
+import { CategoryUpdateComponent } from './category/update/category-update.component';
 
 @Component({
   selector: 'stock-entry',
@@ -42,7 +44,12 @@ export class EntryComponent implements OnInit {
     productUnitId: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
   });
 
-  constructor(private stockService: StockService, private productService: ProductService, private unitService: UnitService) {}
+  constructor(
+    private stockService: StockService,
+    private productService: ProductService,
+    private unitService: UnitService,
+    private dialogService: MatDialogService
+  ) {}
 
   ngOnInit(): void {
     this.loadData();
@@ -52,11 +59,15 @@ export class EntryComponent implements OnInit {
     this.stockService.getAllStorages().subscribe((res: HttpResponse<IStorage[]>) => {
       this.storages = res.body || [];
     });
-    this.productService.getAllCategories().subscribe((res: HttpResponse<ICategory[]>) => {
-      this.categories = res.body || [];
-    });
+    this.loadCategories();
     this.unitService.getAllUnits().subscribe((res: HttpResponse<IUnit[]>) => {
       this.units = res.body || [];
+    });
+  }
+
+  private loadCategories() {
+    this.productService.getAllCategories().subscribe((res: HttpResponse<ICategory[]>) => {
+      this.categories = res.body || [];
     });
   }
 
@@ -104,5 +115,14 @@ export class EntryComponent implements OnInit {
 
   createProduct() {
     // TODO: Implement
+  }
+
+  addNewCategory() {
+    const dialog = this.dialogService.openDialog(CategoryUpdateComponent, {});
+    dialog.closed?.subscribe(reason => {
+      if (reason === 'created') {
+        this.loadCategories();
+      }
+    });
   }
 }

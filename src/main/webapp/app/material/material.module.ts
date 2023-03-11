@@ -21,8 +21,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   exports: [
@@ -48,8 +49,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatSidenavModule,
     MatTabsModule,
     MatStepperModule,
+    MatAutocompleteModule,
     MatProgressBarModule,
-    MatFormFieldModule,
+    MatDatepickerModule,
   ],
 })
 export class MaterialModule {}

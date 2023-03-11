@@ -45,6 +45,11 @@
           <mat-select formControlName="productCategoryId">
             <mat-option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</mat-option>
           </mat-select>
+          <mat-hint align="start">
+            <a class="text-slate-900 underline tracking-normal" (click)="addNewCategory()">
+              <fa-icon icon="plus" class="pr-2"></fa-icon>Add new Category
+            </a>
+          </mat-hint>
         </mat-form-field>
       </div>
     </div>
