@@ -1,6 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CartItem, ICartItem } from '../../../entities/cart-item/cart-item.model';
+import { APICartItem, CartItem, ICartItem } from '../../../entities/cart-item/cart-item.model';
 import { IProduct, Product } from '../../../entities/product/product.model';
 import { ICategory } from '../../../entities/category/category.model';
 import { MatDialogService } from '../../../shared/dialog/mat-dialog.service';
@@ -62,7 +62,7 @@ export class ShopComponent implements OnInit {
     if (cartItem) {
       cartItem.qty++;
     } else {
-      this.cart.data.push(new CartItem(category.id, category.name, 1, price));
+      this.cart.data.push(new CartItem(category.id!, category.name, 1, price));
     }
     this.cart._updateChangeSubscription();
   }
@@ -102,6 +102,14 @@ export class ShopComponent implements OnInit {
 
   checkOut() {
     this.shopService.checkout(this.cart.data).subscribe((bill: HttpResponse<IBill>) => {
+      this.dialogService.openDialog(CheckoutDialogComponent, { data: bill.body });
+    });
+    this.emptyCart();
+  }
+
+  storno() {
+    let cart = this.cart.data.map(item => new APICartItem(item.id, -item.qty, item.price));
+    this.shopService.storno(cart).subscribe((bill: HttpResponse<IBill>) => {
       this.dialogService.openDialog(CheckoutDialogComponent, { data: bill.body });
     });
     this.emptyCart();

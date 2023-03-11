@@ -2,30 +2,32 @@
   "userManagement": {
     "home": {
       "title": "Benutzer",
-      "refreshListLabel": "Refresh list",
+      "refreshListLabel": "Liste aktualisieren",
       "createLabel": "Neuen Benutzer erstellen",
       "createOrEditLabel": "Benutzer erstellen oder bearbeiten"
     },
-    "created": "Ein neuer Benutzer wurde mit ID {{ param }} erstellt",
-    "updated": "Ein Benutzer mit ID {{ param }} wurde geändert",
-    "deleted": "Ein Benutzer mit ID {{ param }} wurde gelöscht",
+    "created": "Ein neuer Benutzer wurde mit der Kennung {{ param }} erstellt",
+    "updated": "Ein Benutzer wurde mit der Kennung {{ param }} aktualisiert",
+    "deleted": "Ein Benutzer wurde mit der Kennung {{ param }} gelöscht",
     "delete": {
-      "question": "Sind Sie sicher, dass Sie den Benutzer {{ login }} löschen möchten?"
+      "question": "Sind Sie sicher, dass Sie den Benutzer <span class=\"font-bold\">\"{{ login }}\"</span> löschen möchten?"
     },
     "detail": {
       "title": "Benutzer"
     },
-    "login": "Login",
+    "login": "Anmeldung",
     "firstName": "Vorname",
     "lastName": "Nachname",
-    "email": "Email",
-    "activated": "Aktiv",
+    "name": "Name",
+    "email": "E-Mail",
+    "activated": "Aktiviert",
     "deactivated": "Deaktiviert",
+    "status": "Status",
     "profiles": "Profile",
     "langKey": "Sprache",
     "createdBy": "Erstellt von",
-    "createdDate": "Erstellt am",
-    "lastModifiedBy": "Bearbeitet von",
-    "lastModifiedDate": "Zuletzt bearbeitet"
+    "createdDate": "Erstellungsdatum",
+    "lastModifiedBy": "Geändert von",
+    "lastModifiedDate": "Änderungsdatum"
   }
 }

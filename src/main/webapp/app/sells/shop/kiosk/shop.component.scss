@@ -6,10 +6,6 @@
   max-width: 50px;
 }
 
-.h-full {
-  height: 100%;
-}
-
 table {
   width: 100%;
 }
@@ -21,6 +17,7 @@ tr.mat-row {
 td.mat-cell,
 td.mat-footer-cell {
   font-size: 17px;
+  font-weight: 500;
 }
 
 th.mat-header-cell:last-of-type,
@@ -28,10 +25,15 @@ td.mat-cell:last-of-type {
   text-align: right;
 }
 
+td.mat-footer-cell {
+  font-weight: 800;
+}
+
 .product {
   cursor: pointer;
-  min-height: 8em;
-  min-width: 8em;
+  height: 150px;
+  min-width: 200px;
+  width: 100%;
   user-select: none;
 }
 
@@ -49,12 +51,12 @@ td.mat-cell:last-of-type {
 
 .product .name {
   font-weight: 800;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .product .price {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .bg-icon {

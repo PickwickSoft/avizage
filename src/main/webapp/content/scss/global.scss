@@ -1,6 +1,9 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import 'material';
 
 /* ==============================================================
@@ -107,10 +110,6 @@ Generic styles
 
 .footer {
   border-top: 1px solid rgba(0, 0, 0, 0.125);
-}
-
-td.mat-footer-cell {
-  font-weight: bold;
 }
 
 .hand,
@@ -259,6 +258,11 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
   height: 66px;
 }
 
+.search-wrapper:focus-within {
+  // border-color: transparent;
+  // box-shadow: 0 0 0 3px hsl(240, 51%, 61%) !important;
+}
+
 .search-wrapper button,
 .search-wrapper input {
   margin-top: 15px;
@@ -271,8 +275,26 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
   border: none !important;
 }
 
-.search-wrapper input:focus {
-  outline: none;
+.search-wrapper input:focus-visible {
+  box-shadow: none !important;
+  border: none !important;
+  caret-color: hsl(240, 51%, 61%);
+}
+
+.search-wrapper input:focus::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: hsl(240, 51%, 61%);
+  opacity: 1; /* Firefox */
+}
+
+.search-wrapper input:focus:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: hsl(240, 51%, 61%);
+}
+
+.search-wrapper input:focus::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: hsl(240, 51%, 61%);
 }
 
 .right-border {
@@ -300,4 +322,18 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
 .h-screen {
   min-height: 85vh;
 }
-/* jhipster-needle-scss-add-main JHipster will add new css style */
+
+/* ==========================================================================
+Add focus to all elements
+*/
+
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px hsl(240, 51%, 61%) !important;
+  transition: box-shadow 0.3s ease;
+}
+
+.mat-input-element:focus-visible,
+.mat-select:focus-visible {
+  box-shadow: none !important;
+}

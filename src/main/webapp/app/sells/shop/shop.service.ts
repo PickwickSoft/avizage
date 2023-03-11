@@ -25,4 +25,8 @@ export class ShopService {
     cart = cart.map(item => new APICartItem(item.id, item.qty, item.price));
     return this.http.post<IBill>(`${this.resourceUrl}/sale`, cart, { observe: 'response' });
   }
+
+  storno(cart: ICartItem[]): Observable<HttpResponse<IBill>> {
+    return this.http.post<IBill>(`${this.resourceUrl}/sale`, cart, { observe: 'response' });
+  }
 }

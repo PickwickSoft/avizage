@@ -3,27 +3,29 @@
   <jhi-alert-error></jhi-alert-error>
   <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Price input">
     <div class="btn-group">
-      <input class="text-center form-control-lg mb-2" id="code" [(ngModel)]="price" />
+      <input class="text-center form-control-lg mb-2 tw-ring-2 tw-ring-slate-900 tw-w-full" id="code" [(ngModel)]="price" />
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('1')">1</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('2')">2</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('3')">3</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('1')">1</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('2')">2</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('3')">3</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('4')">4</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('5')">5</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('6')">6</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('4')">4</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('5')">5</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('6')">6</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('7')">7</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('8')">8</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('9')">9</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('7')">7</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('8')">8</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('9')">9</button>
     </div>
     <div class="btn-group">
-      <button type="button" class="btn btn-light py-3" (click)="priceAdd('0')">0</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceDecimalPoint()">.</button>
-      <button type="button" class="btn btn-light py-3" (click)="priceDel()">&lt;</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceAdd('0')">0</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceDecimalPoint()">.</button>
+      <button type="button" class="btn btn-light py-3 tw-text-2xl tw-font-medium" (click)="priceDel()">
+        <fa-icon icon="delete-left"></fa-icon>
+      </button>
     </div>
   </div>
 </mat-dialog-content>
@@ -31,13 +33,13 @@
   <button
     mat-flat-button
     color="primary"
-    class="touch-btn"
+    class="touch-btn tw-text-lg"
     [mat-dialog-close]="parseFloat(price)"
     [disabled]="price === '' || price === '.'"
   >
     <span jhiTranslate="shop.cart.add">Add to cart</span>
   </button>
-  <button mat-stroked-button mat-dialog-close class="touch-btn" [mat-dialog-close]="-1">
+  <button mat-stroked-button mat-dialog-close class="touch-btn tw-text-lg" [mat-dialog-close]="-1">
     <span jhiTranslate="entity.action.cancel">Cancel</span>
   </button>
 </mat-dialog-actions>
