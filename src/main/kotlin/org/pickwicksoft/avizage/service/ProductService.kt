@@ -28,6 +28,11 @@ class ProductService(
     fun getCategories(): List<Category> {
         return categoryRepository.findAll()
     }
+
+    fun addProduct(product: Product): Product {
+        productRepository.save(product)
+        return product
+    }
 }
 
 fun Long.length() = when (this) {

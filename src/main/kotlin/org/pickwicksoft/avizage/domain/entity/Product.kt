@@ -15,10 +15,10 @@ class Product(
     val description: String?,
 
     @ManyToOne
-    val unit: Unit,
+    var unit: Unit,
 
     @ManyToOne
-    val category: Category,
+    var category: Category,
 
     @Column(name = "bar_code", length = 13)
     var barCode: Long? = null,

@@ -30,7 +30,7 @@ class ProductResource(
     }
 
     @GetMapping("/product/categories")
-    fun getDefaultCategories(): List<CategoryDto> {
+    fun getCategories(): List<CategoryDto> {
         log.debug("REST request to get default categories")
         return productService.getCategories().map(categoryMapper::toDto)
     }

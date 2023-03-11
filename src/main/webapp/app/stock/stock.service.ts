@@ -7,7 +7,7 @@ import { IProductEntry } from '../entities/product/product-entry.model';
 
 @Injectable({ providedIn: 'root' })
 export class StockService {
-  private resourceUrl = this.applicationConfigService.getEndpointFor('api/stock');
+  private resourceUrl = this.applicationConfigService.getEndpointFor('api/stocks');
 
   constructor(private http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
