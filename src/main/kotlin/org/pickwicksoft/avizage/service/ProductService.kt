@@ -62,6 +62,7 @@ class ProductService(
             throw BadRequestAlertException("Name already used", ENTITY_NAME_CATEGORY, "nameUsed")
         }
         return categoryRepository.save(category)
+    }
 
     fun addProduct(product: Product): Product {
         productRepository.save(product)
