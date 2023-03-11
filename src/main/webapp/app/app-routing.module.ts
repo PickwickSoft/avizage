@@ -13,14 +13,6 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
     RouterModule.forRoot(
       [
         {
-          path: 'admin',
-          data: {
-            authorities: [Authority.ADMIN],
-          },
-          canActivate: [UserRouteAccessService],
-          loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
-        },
-        {
           path: 'account',
           loadChildren: () => import('./account/account.module').then(m => m.AccountModule),
         },
@@ -43,6 +35,14 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
           },
           canActivate: [UserRouteAccessService],
           loadChildren: () => import('./stock/stock-routing.module').then(m => m.StockRoutingModule),
+        },
+        {
+          path: 'admin',
+          data: {
+            authorities: [Authority.ADMIN],
+          },
+          canActivate: [UserRouteAccessService],
+          loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule),
         },
         {
           path: '',
