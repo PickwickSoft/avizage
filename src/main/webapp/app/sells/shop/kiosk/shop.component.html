@@ -95,16 +95,12 @@
           </tr>
           <tr *matFooterRowDef="getDataSource()" mat-footer-row></tr>
         </table>
-        <button
-          (click)="checkOut()"
-          [disabled]="cart.data.length === 0"
-          class="mt-4 full-width checkout"
-          color="primary"
-          jhiTranslate="shop.cart.checkout"
-          mat-flat-button
-        >
+        <button (click)="checkOut()" [disabled]="cart.data.length === 0" class="mt-4 full-width checkout" color="primary" mat-flat-button>
           <fa-icon icon="shopping-cart"></fa-icon>
-          Checkout
+          <span jhiTranslate="shop.cart.checkout">Checkout</span>
+        </button>
+        <button (click)="storno()" [disabled]="cart.data.length === 0" class="mt-4 full-width checkout" mat-stroked-button>
+          <span jhiTranslate="shop.cart.return">Return</span>
         </button>
       </div>
     </div>
