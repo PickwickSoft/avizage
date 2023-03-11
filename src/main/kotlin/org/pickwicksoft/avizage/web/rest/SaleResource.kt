@@ -14,6 +14,7 @@ import org.springframework.format.annotation.DateTimeFormat
 import org.springframework.web.bind.annotation.*
 import java.time.*
 import javax.validation.Valid
+import kotlin.math.abs
 
 @RestController
 @RequestMapping("/api/shop")
@@ -38,9 +39,26 @@ class SaleResource(
 
     @GetMapping("/sales/of")
     fun getSalesOf(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) day: LocalDate): SalesReportDto {
-        log.debug("REST request to get sales for day")
+        log.debug("GET request to get sales for day")
         val requestedDay = LocalDateTime.of(day, LocalTime.MIN).atZone(ZoneId.systemDefault()).toInstant()
         val sales = saleService.getSalesOf(requestedDay)
+
+        return salesReportDto(sales)
+    }
+
+    @GetMapping("/sales")
+    fun getSalesInRange(
+        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) startDate: LocalDate?,
+        @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) endDate: LocalDate?
+    ): SalesReportDto {
+        log.debug("GET request to get sales in range from $startDate to $endDate")
+        val fromDate = startDate?.let {
+            LocalDateTime.of(it, LocalTime.MIN).atZone(ZoneId.systemDefault()).toInstant()
+        }
+        val toDate = endDate?.let {
+            LocalDateTime.of(endDate, LocalTime.MIN).atZone(ZoneId.systemDefault()).toInstant()
+        }
+        val sales = saleService.getSalesInRange(fromDate, toDate)
 
         return salesReportDto(sales)
     }
@@ -48,13 +66,13 @@ class SaleResource(
     private fun salesReportDto(sales: List<Sale>): SalesReportDto {
 
         val itemsMap = sales
-            .groupBy { it.category }
+            .groupBy { Pair(it.category, it.quantity / abs(it.quantity)) }
 
         val reportItems: MutableSet<SaleDto> = mutableSetOf()
         var total = 0.0
 
         for (item in itemsMap) {
-            var s = item.value[0]
+            var firstSaleInCategory: Sale = item.value[0]
             val sum = item.value
                 .map { sale -> (sale.quantity * sale.unitPrice) }
                 .reduce { acc, d -> acc + d }
@@ -63,7 +81,7 @@ class SaleResource(
                 .map { saleDto -> saleDto.quantity }
                 .reduce { acc, d -> acc + d }
 
-            reportItems.add(SaleDto(s.date, s.user.login!!, s.storage.name, item.key!!.name, sum, qty))
+            reportItems.add(SaleDto(firstSaleInCategory.date, firstSaleInCategory.user.login!!, firstSaleInCategory.storage.name, item.key!!.first!!.name, sum, qty))
             total += sum
         }
 

@@ -45,15 +45,34 @@ class SaleService(
     }
 
     fun getSalesOf(day: Instant): List<Sale> {
-        val requestedDay = LocalDateTime.ofInstant(day, ZoneId.systemDefault())
-        val startOfDay = LocalDateTime
+        return saleRepository.findAll().filter { sale ->
+            sale.date!!.isAfter(day.startOfDay()) && sale.date!!.isBefore(day.startOfNextDay())
+        }
+    }
+
+    fun getSalesInRange(from: Instant?, to: Instant?): List<Sale> {
+        return saleRepository.findAll().filter { sale ->
+            val isAfter = from?.let {
+                sale.date!!.isAfter(it.startOfDay())
+            } ?: true
+
+            val isBefore = to?.let {
+                sale.date!!.isBefore(it.startOfNextDay())
+            } ?: true
+
+            return@filter isAfter && isBefore
+        }
+    }
+
+    fun Instant.startOfDay(): Instant {
+        val requestedDay = LocalDateTime.ofInstant(this, ZoneId.systemDefault())
+        return LocalDateTime
             .of(requestedDay.year, requestedDay.month, requestedDay.dayOfMonth, 0, 0, 0)
             .atZone(ZoneId.systemDefault()).toInstant()
-        val startOfNextDay = startOfDay.plus(1, ChronoUnit.DAYS)
+    }
 
-        return saleRepository.findAll().filter { sale ->
-            sale.date!!.isAfter(startOfDay) && sale.date!!.isBefore(startOfNextDay)
-        }
+    fun Instant.startOfNextDay(): Instant {
+        return this.startOfDay().plus(1, ChronoUnit.DAYS)
     }
 
     private fun createSaleFromCartItem(item: CartItem): Sale = Sale(
