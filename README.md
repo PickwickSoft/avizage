@@ -1,4 +1,5 @@
-# avizage
+[![Build and deploy JAR app to Azure Web App - Avizage](https://github.com/PickwickSoft/avizage/actions/workflows/main_avizage-app.yml/badge.svg)](https://github.com/PickwickSoft/avizage/actions/workflows/main_avizage-app.yml)
+# Avizage
 
 This application was generated using JHipster 7.9.3, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.3](https://www.jhipster.tech/documentation-archive/v7.9.3).
 
